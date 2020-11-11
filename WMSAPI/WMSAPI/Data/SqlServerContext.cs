@@ -21,6 +21,9 @@ namespace WMSAPI.Data
         public DbSet<Productlist> Productlist { get; set; }
         public DbSet<W_Warehous> Warehous { get; set; }
 
+<<<<<<< HEAD
+
+=======
         //张春雨
         public DbSet<Z_Purchasing> Purchasing { get; set; }//采购表
         public DbSet<Z_Material> Material { get; set; }//原料表
@@ -36,6 +39,7 @@ namespace WMSAPI.Data
         public DbSet<T_Itemdetails>  Itemdetails { get; set; }
         public DbSet<T_replenishment> Replenishments { get; set; }
         public DbSet<T_singlerow> Singlerows { get; set; }
+>>>>>>> 8589462f1c8def0c0f9f38179056d717d58f0fb0
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<A_Administrator>().ToTable("Administrators");
