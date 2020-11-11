@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace WMSAPI.Model
     /// </summary>
     public class W_Warehous
     {
+        [Key]
         public int Wid { get; set; }//主键id
         public string SuperiorWarehouse { get; set; }//上级仓库
         public string WarehouseName { get; set; }//当前仓库名称
