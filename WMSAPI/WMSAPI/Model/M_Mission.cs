@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace WMSAPI.Model
     /// </summary>
     public class M_Mission
     {
+        [Key]
         public int Mid { get; set; }//主键id
         public int Tasknumber { get; set; }//任务编号
         public DateTime MissionDate { get; set; }//任务下达时间

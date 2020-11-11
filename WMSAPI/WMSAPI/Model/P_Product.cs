@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace WMSAPI.Model
     /// </summary>
     public class P_Product
     {
+        [Key]
         public int Pid { get; set; }//主键id
         public string Classes { get; set; }//产品类别
         public string ProductCode { get; set; }//产品编号

@@ -8,6 +8,6 @@ namespace WMSAPI.Dal
 {
     public interface IWMSS
     {
-        Task<List<M_Mission>> GetMissions();
+        
     }
 }
