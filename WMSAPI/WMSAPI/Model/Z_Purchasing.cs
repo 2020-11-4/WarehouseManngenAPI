@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WMSAPI.Model
 {
-    public class Purchasing
+    public class Z_Purchasing
     {
         /// <summary>
         /// 采购表
@@ -14,7 +14,6 @@ namespace WMSAPI.Model
         [Key]
         public int Purchasing_Id { get; set; } //主键
 
-        [Required]
         [StringLength(20)]
         public string Ordernumber { get; set; }//采购单号
 
@@ -27,7 +26,6 @@ namespace WMSAPI.Model
         public DateTime Purchasedate { get; set; }//采购日期
 
 
-        [Required]
         [StringLength(20)]
         public string Agent { get; set; }//采购人
 
