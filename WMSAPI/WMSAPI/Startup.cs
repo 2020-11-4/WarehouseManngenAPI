@@ -32,8 +32,13 @@ namespace WMSAPI
             //配置跨域处理，允许所有来源：
             services.AddCors(options =>
             options.AddPolicy("cor",
-            p => p.AllowAnyOrigin())
+            p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod())
             );
+
+            //services.AddDbContext<DataContext>(options=>
+            //{ 
+            //    options.UseSqlServer()
+            //})
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
