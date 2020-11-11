@@ -10,8 +10,8 @@ using WMSAPI.Data;
 namespace WMSAPI.Migrations
 {
     [DbContext(typeof(SqlServerContext))]
-    [Migration("20201111072737_aaa1")]
-    partial class aaa1
+    [Migration("20201111080546_migrationName")]
+    partial class migrationName
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -114,7 +114,7 @@ namespace WMSAPI.Migrations
                     b.ToTable("Privilege");
                 });
 
-            modelBuilder.Entity("WMSAPI.Model.P_Product", b =>
+            modelBuilder.Entity("WMSAPI.Model.Productlist", b =>
                 {
                     b.Property<int>("Pid")
                         .ValueGeneratedOnAdd()
@@ -141,7 +141,109 @@ namespace WMSAPI.Migrations
 
                     b.HasKey("Pid");
 
-                    b.ToTable("Product");
+                    b.ToTable("Productlist");
+                });
+
+            modelBuilder.Entity("WMSAPI.Model.T_Itemdetails", b =>
+                {
+                    b.Property<int>("XID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Approvalnumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Quantity")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Turnoverbasket")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("XID");
+
+                    b.ToTable("Itemdetails");
+                });
+
+            modelBuilder.Entity("WMSAPI.Model.T_audit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("Allocationdate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Auditmoney")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Auditopinion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Auditstatus")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Audits");
+                });
+
+            modelBuilder.Entity("WMSAPI.Model.T_replenishment", b =>
+                {
+                    b.Property<int>("IDX")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("ReplenishDate")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Replenishodd")
+                        .HasColumnType("int");
+
+                    b.HasKey("IDX");
+
+                    b.ToTable("Replenishments");
+                });
+
+            modelBuilder.Entity("WMSAPI.Model.T_singlerow", b =>
+                {
+                    b.Property<int>("IDX")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Allocationdate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Allotcondition")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Allotpeople")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Auditstate")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Framnumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Requisition")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Transferred")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tuneout")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IDX");
+
+                    b.ToTable("Singlerows");
                 });
 
             modelBuilder.Entity("WMSAPI.Model.W_Warehous", b =>

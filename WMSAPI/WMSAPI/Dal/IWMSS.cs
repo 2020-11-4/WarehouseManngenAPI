@@ -6,8 +6,8 @@ using WMSAPI.Model;
 
 namespace WMSAPI.Dal
 {
-    public interface IWMSS
+   public interface IWMSS
     {
-        
+       
     }
 }

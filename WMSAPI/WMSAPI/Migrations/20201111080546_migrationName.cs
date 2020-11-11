@@ -3,10 +3,27 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WMSAPI.Migrations
 {
-    public partial class aaa1 : Migration
+    public partial class migrationName : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Administrators",
+                columns: table => new
+                {
+                    Aid = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    WarehouseName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LoginPjone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AState = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Administrators", x => x.Aid);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Arrival",
                 columns: table => new
@@ -24,6 +41,37 @@ namespace WMSAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Arrival", x => x.Arrival_Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Audits",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Auditmoney = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Auditstatus = table.Column<bool>(type: "bit", nullable: false),
+                    Auditopinion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Allocationdate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Audits", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Goods",
+                columns: table => new
+                {
+                    Gid = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    Rsesrvoirare = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DescriptionGoods = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Goods", x => x.Gid);
                 });
 
             migrationBuilder.CreateTable(
@@ -47,6 +95,22 @@ namespace WMSAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Itemdetails",
+                columns: table => new
+                {
+                    XID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Quantity = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Approvalnumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Turnoverbasket = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Itemdetails", x => x.XID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Material",
                 columns: table => new
                 {
@@ -62,6 +126,37 @@ namespace WMSAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Material", x => x.Material_Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Mission",
+                columns: table => new
+                {
+                    Mid = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Tasknumber = table.Column<int>(type: "int", nullable: false),
+                    MissionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Sid = table.Column<int>(type: "int", nullable: false),
+                    Hid = table.Column<int>(type: "int", nullable: false),
+                    Mint = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Mission", x => x.Mid);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Privilege",
+                columns: table => new
+                {
+                    Pid = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    KId = table.Column<int>(type: "int", nullable: false),
+                    AId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Privilege", x => x.Pid);
                 });
 
             migrationBuilder.CreateTable(
@@ -100,6 +195,24 @@ namespace WMSAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Productlist",
+                columns: table => new
+                {
+                    Pid = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Classes = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProductCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProductName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProductStandard = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Measure = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LnventorySettings = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Productlist", x => x.Pid);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Purchasing",
                 columns: table => new
                 {
@@ -115,6 +228,40 @@ namespace WMSAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Purchasing", x => x.Purchasing_Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Replenishments",
+                columns: table => new
+                {
+                    IDX = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Replenishodd = table.Column<int>(type: "int", nullable: false),
+                    ReplenishDate = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Replenishments", x => x.IDX);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Singlerows",
+                columns: table => new
+                {
+                    IDX = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Requisition = table.Column<int>(type: "int", nullable: false),
+                    Tuneout = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Transferred = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Allocationdate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Allotpeople = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Auditstate = table.Column<int>(type: "int", nullable: false),
+                    Allotcondition = table.Column<int>(type: "int", nullable: false),
+                    Framnumber = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Singlerows", x => x.IDX);
                 });
 
             migrationBuilder.CreateTable(
@@ -142,6 +289,26 @@ namespace WMSAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Warehous",
+                columns: table => new
+                {
+                    Wid = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SuperiorWarehouse = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    WarehouseName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    WarehouseCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Arrangr = table.Column<int>(type: "int", nullable: false),
+                    WarehuoseAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DetailedAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    WarehouseEntities = table.Column<bool>(type: "bit", nullable: false),
+                    State = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Warehous", x => x.Wid);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Workorder",
                 columns: table => new
                 {
@@ -164,13 +331,31 @@ namespace WMSAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Administrators");
+
+            migrationBuilder.DropTable(
                 name: "Arrival");
+
+            migrationBuilder.DropTable(
+                name: "Audits");
+
+            migrationBuilder.DropTable(
+                name: "Goods");
 
             migrationBuilder.DropTable(
                 name: "Inventorylist");
 
             migrationBuilder.DropTable(
+                name: "Itemdetails");
+
+            migrationBuilder.DropTable(
                 name: "Material");
+
+            migrationBuilder.DropTable(
+                name: "Mission");
+
+            migrationBuilder.DropTable(
+                name: "Privilege");
 
             migrationBuilder.DropTable(
                 name: "Procurement");
@@ -179,10 +364,22 @@ namespace WMSAPI.Migrations
                 name: "product");
 
             migrationBuilder.DropTable(
+                name: "Productlist");
+
+            migrationBuilder.DropTable(
                 name: "Purchasing");
 
             migrationBuilder.DropTable(
+                name: "Replenishments");
+
+            migrationBuilder.DropTable(
+                name: "Singlerows");
+
+            migrationBuilder.DropTable(
                 name: "Supplies");
+
+            migrationBuilder.DropTable(
+                name: "Warehous");
 
             migrationBuilder.DropTable(
                 name: "Workorder");
