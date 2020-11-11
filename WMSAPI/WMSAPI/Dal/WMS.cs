@@ -14,6 +14,7 @@ namespace WMSAPI.Dal
         public WMS(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("SqlServerContext");
+
         }
 
 
