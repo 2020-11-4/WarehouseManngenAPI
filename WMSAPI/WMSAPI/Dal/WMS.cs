@@ -11,6 +11,11 @@ namespace WMSAPI.Dal
 {
     public class WMS : IWMSS
     {
+        //private readonly string _connectionString;
+        //public WMS(IConfiguration configuration) 
+        //{
+        //    _connectionString = configuration.GetConnectionString("SqlServerContext");
+        //}
         SqlSugarClient db = new SqlSugarClient(
             new ConnectionConfig
             {
@@ -20,7 +25,10 @@ namespace WMSAPI.Dal
                 InitKeyType = InitKeyType.Attribute
             });
 
-
-
+        public int Add(W_Warehous warehous)
+        {
+            var list = db.Insertable(warehous).ExecuteCommand();
+            return list;
+        }
     }
 }

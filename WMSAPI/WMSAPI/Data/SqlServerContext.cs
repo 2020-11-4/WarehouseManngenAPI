@@ -36,6 +36,7 @@ namespace WMSAPI.Data
         public DbSet<T_Itemdetails>  Itemdetails { get; set; }
         public DbSet<T_replenishment> Replenishments { get; set; }
         public DbSet<T_singlerow> Singlerows { get; set; }
+        public DbSet<S_supplier>  Suppliers { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<A_Administrator>().ToTable("Administrators");
@@ -51,7 +52,7 @@ namespace WMSAPI.Data
             modelBuilder.Entity<Z_Procurement>().ToTable("Procurement");
             modelBuilder.Entity<Z_Inventorylist>().ToTable("Inventorylist");
             modelBuilder.Entity<Z_product>().ToTable("product");
-
+            modelBuilder.Entity<S_supplier>().ToTable("Suppliers");
             modelBuilder.Entity<Z_Workorder>().ToTable("Workorder");
 
             modelBuilder.Entity<T_singlerow>().ToTable("Singlerows");

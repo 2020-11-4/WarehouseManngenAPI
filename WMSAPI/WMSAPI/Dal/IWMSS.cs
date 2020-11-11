@@ -8,6 +8,6 @@ namespace WMSAPI.Dal
 {
    public interface IWMSS
     {
-       
+        int Add(W_Warehous warehous);
     }
 }
