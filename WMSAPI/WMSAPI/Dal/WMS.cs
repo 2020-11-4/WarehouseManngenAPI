@@ -13,12 +13,9 @@ namespace WMSAPI.Dal
         private readonly string _connectionString;
         public WMS(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("shenwenjie");
+            _connectionString = configuration.GetConnectionString("SqlServerContext");
         }
 
-        public Task<List<M_Mission>> GetMissions()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
