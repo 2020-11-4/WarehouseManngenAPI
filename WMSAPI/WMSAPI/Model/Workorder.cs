@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WMSAPI.Model
 {
-    public class Z_Workorder
+    public class Workorder
     {
         /// <summary>
         /// 入库任务单表

@@ -25,10 +25,16 @@ namespace WMSAPI.Dal
                 InitKeyType = InitKeyType.Attribute
             });
 
-        public int Add(W_Warehous warehous)
+        public int Add(Warehous warehous)
         {
             var list = db.Insertable(warehous).ExecuteCommand();
             return list;
+        }
+
+        public List<Warehous> GetWarehous()
+        {
+            List<Warehous> lint = db.Queryable<Warehous>().ToList();
+            return lint;
         }
     }
 }

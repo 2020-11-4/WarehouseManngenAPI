@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WMSAPI.Model
 {
-    public class Z_Purchasing
+    public class Purchasing
     {
         /// <summary>
         /// 采购表

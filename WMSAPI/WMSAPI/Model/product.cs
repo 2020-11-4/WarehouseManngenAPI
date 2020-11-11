@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WMSAPI.Model
 {
-    public class Z_product
+    public class product
     {
         /// <summary>
         /// 产品表

@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WMSAPI.Model
 {
-    public class Z_Procurement
+    public class Procurement
     {
         /// <summary>
         /// 采购入库表

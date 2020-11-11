@@ -9,7 +9,7 @@ namespace WMSAPI.Model
     /// <summary>
     /// 任务表
     /// </summary>
-    public class M_Mission
+    public class Mission
     {
         [Key]
         public int Mid { get; set; }//主键id

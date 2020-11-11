@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WMSAPI.Model
 {
-    public class Z_Inventorylist
+    public class Inventorylist
     {
         /// <summary>
         /// 入库明细表

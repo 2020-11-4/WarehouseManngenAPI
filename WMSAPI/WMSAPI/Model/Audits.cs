@@ -9,7 +9,7 @@ namespace WMSAPI.Model
     /// <summary>
     /// 调拨审核
     /// </summary>
-    public class T_audit
+    public class Audits
     {
         [Key]
         public int Id { get; set; }
