@@ -9,7 +9,7 @@ namespace WMSAPI.Model
     /// <summary>
     /// 补货需求列表
     /// </summary>
-    public class T_replenishment
+    public class Replenishments
     {
         [Key]
         public int IDX { get; set; }//序号

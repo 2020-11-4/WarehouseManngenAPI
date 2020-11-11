@@ -9,7 +9,7 @@ namespace WMSAPI.Model
     /// <summary>
     /// 调拨单列表
     /// </summary>
-    public class T_singlerow
+    public class Singlerows
     {
         [Key]
         public int IDX { get; set; }  //序号       

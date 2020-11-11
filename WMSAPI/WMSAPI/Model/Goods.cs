@@ -9,7 +9,7 @@ namespace WMSAPI.Model
     /// <summary>
     /// 货物表
     /// </summary>
-    public class G_Goods
+    public class Goods
     {
         [Key]
         public int Gid { get; set; }//主键Id

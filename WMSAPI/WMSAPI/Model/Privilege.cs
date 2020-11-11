@@ -9,7 +9,7 @@ namespace WMSAPI.Model
     /// <summary>
     /// 管理权限
     /// </summary>
-    public class P_Privilege
+    public class Privilege
     {
         [Key]
         public int Pid { get; set; }//主键id

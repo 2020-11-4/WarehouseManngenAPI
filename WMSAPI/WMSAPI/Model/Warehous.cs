@@ -9,7 +9,7 @@ namespace WMSAPI.Model
     /// <summary>
     /// 仓库表
     /// </summary>
-    public class W_Warehous
+    public class Warehous
     {
         [Key]
         public int Wid { get; set; }//主键id

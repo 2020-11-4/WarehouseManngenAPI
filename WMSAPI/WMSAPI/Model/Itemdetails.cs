@@ -9,7 +9,7 @@ namespace WMSAPI.Model
     /// <summary>
     /// 调拨物品详情
     /// </summary>
-    public class T_Itemdetails
+    public class Itemdetails
     {
         [Key]
         public int XID { get; set; }//序号

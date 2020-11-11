@@ -9,7 +9,7 @@ namespace WMSAPI.Model
     /// <summary>
     /// 库管员管理
     /// </summary>
-    public class A_Administrator
+    public class Administrators
     {
         [Key]
         public int Aid { get; set; }//主键Id

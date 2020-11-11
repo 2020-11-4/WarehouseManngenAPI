@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WMSAPI.Model
 {
-    public class Z_Workorder
+    public class Workorder
     {
         /// <summary>
         /// 入库任务单表
