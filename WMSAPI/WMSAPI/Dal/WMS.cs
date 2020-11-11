@@ -16,6 +16,25 @@ namespace WMSAPI.Dal
             _connectionString = configuration.GetConnectionString("SqlServerContext");
         }
 
-        
+
+        public List<T_Itemdetails> GetItemdetails()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<T_replenishment> GetTreplenishments()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<T_single_row> GetTsingle_s()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<T_audit> Get_Audits()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
