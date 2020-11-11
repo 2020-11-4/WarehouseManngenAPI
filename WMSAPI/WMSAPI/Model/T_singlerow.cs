@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,8 +9,9 @@ namespace WMSAPI.Model
     /// <summary>
     /// 调拨单列表
     /// </summary>
-    public class T_single_row
+    public class T_singlerow
     {
+        [Key]
         public int IDX { get; set; }  //序号       
         public int Requisition { get; set; }//调拨单号
         public string Tuneout { get; set; }//调出仓库

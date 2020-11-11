@@ -9,7 +9,7 @@ namespace WMSAPI.Model
     /// <summary>
     /// 产品类别
     /// </summary>
-    public class P_Product
+    public class Productlist
     {
         [Key]
         public int Pid { get; set; }//主键id

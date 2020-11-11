@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace WMSAPI.Model
     /// </summary>
     public class T_Itemdetails
     {
+        [Key]
         public int XID { get; set; }//序号
         public string Quantity { get; set; }//申请数量
         public string Approvalnumber { get; set; }//审批数量
