@@ -12,6 +12,7 @@ namespace WMSAPI.Controllers
     public class MoveBusinessController : ControllerBase
     {
         //[Route("api/T_Itemdetails")]
+
         
     }
 }
