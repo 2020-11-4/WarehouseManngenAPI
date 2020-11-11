@@ -11,6 +11,6 @@ namespace WMSAPI
     {
         public MYDBContext(DbContextOptions<MYDBContext> options) : base(options) { }
 
-        public DbSet<Cdelivery> xx { get; set; }
+        public DbSet<Cdelivery> x { get; set; }
     }
 }
