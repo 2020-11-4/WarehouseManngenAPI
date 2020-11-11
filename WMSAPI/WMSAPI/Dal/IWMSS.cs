@@ -7,6 +7,6 @@ namespace WMSAPI.Dal
 {
     public class IWMSS
     {
-      
+        
     }
 }
