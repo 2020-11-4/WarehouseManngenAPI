@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace WMSAPI.Model
        /// <summary>
        /// 报损表
        /// </summary>
+       [Key]
         public int ID { get; set; }//主键
         public string FrmLossID { get; set; }//报损ID
         public DateTime FrmLossTime { get; set; }//有效日期

@@ -12,10 +12,10 @@ namespace WMSAPI.Dal
 {
     public class WMS : IWMSS
     {
-        //private readonly string _connectionString;
+        //private  string _connectionString;
         //public WMS(IConfiguration configuration)
         //{
-        //    _connectionString = configuration.GetConnectionString("SqlServerContext");
+        //    _connectionString = configuration.GetConnectionString("swj");
         //}
         SqlSugarClient db = new SqlSugarClient(
             new ConnectionConfig
@@ -39,7 +39,7 @@ namespace WMSAPI.Dal
               ))
            //.Where((st,sc)=>sc.id>0) 多表条件用法
            .Select<Goods>().ToList();
-            return  list;
+            return list;
         }
     }
 }

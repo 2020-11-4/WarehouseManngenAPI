@@ -35,8 +35,10 @@ namespace WMSAPI.Data
         public DbSet<Replenishments> Replenishments { get; set; }
         public DbSet<Singlerows> Singlerows { get; set; }
         public DbSet<Distributor> Distributor { get; set; }
+        public DbSet<Frmloss> Frmlosses { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Frmloss>().ToTable("Frmlosses");
             modelBuilder.Entity<Administrators>().ToTable("Administrators");
             modelBuilder.Entity<Goods>().ToTable("Goods");
             modelBuilder.Entity<Mission>().ToTable("Mission");

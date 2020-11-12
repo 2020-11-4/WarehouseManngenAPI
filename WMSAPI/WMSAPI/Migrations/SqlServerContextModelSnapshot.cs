@@ -126,6 +126,33 @@ namespace WMSAPI.Migrations
                     b.ToTable("Suppliers");
                 });
 
+            modelBuilder.Entity("WMSAPI.Model.Frmloss", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("FrmLossAudit")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FrmLossHandle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FrmLossID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FrmLossNum")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FrmLossTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Frmlosses");
+                });
+
             modelBuilder.Entity("WMSAPI.Model.Goods", b =>
                 {
                     b.Property<int>("Gid")

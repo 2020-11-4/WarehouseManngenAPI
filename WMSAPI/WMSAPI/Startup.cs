@@ -30,7 +30,7 @@ namespace WMSAPI
             services.AddControllers();
             services.AddControllersWithViews();
             services.AddDbContext<SqlServerContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("SqlServerContext")));
+                    options.UseSqlServer(Configuration.GetConnectionString("swj")));
 
             services.AddSingleton<IWMSS, WMS>();
 

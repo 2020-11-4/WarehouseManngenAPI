@@ -10,8 +10,8 @@ using WMSAPI.Data;
 namespace WMSAPI.Migrations
 {
     [DbContext(typeof(SqlServerContext))]
-    [Migration("20201111080546_migrationName")]
-    partial class migrationName
+    [Migration("20201112053300_Mationllls")]
+    partial class Mationllls
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace WMSAPI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("WMSAPI.Model.A_Administrator", b =>
+            modelBuilder.Entity("WMSAPI.Model.Administrators", b =>
                 {
                     b.Property<int>("Aid")
                         .ValueGeneratedOnAdd()
@@ -48,241 +48,7 @@ namespace WMSAPI.Migrations
                     b.ToTable("Administrators");
                 });
 
-            modelBuilder.Entity("WMSAPI.Model.G_Goods", b =>
-                {
-                    b.Property<int>("Gid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("DescriptionGoods")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Rsesrvoirare")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Gid");
-
-                    b.ToTable("Goods");
-                });
-
-            modelBuilder.Entity("WMSAPI.Model.M_Mission", b =>
-                {
-                    b.Property<int>("Mid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("Hid")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Mint")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("MissionDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Sid")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Tasknumber")
-                        .HasColumnType("int");
-
-                    b.HasKey("Mid");
-
-                    b.ToTable("Mission");
-                });
-
-            modelBuilder.Entity("WMSAPI.Model.P_Privilege", b =>
-                {
-                    b.Property<int>("Pid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("AId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("KId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Pid");
-
-                    b.ToTable("Privilege");
-                });
-
-            modelBuilder.Entity("WMSAPI.Model.Productlist", b =>
-                {
-                    b.Property<int>("Pid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Classes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("LnventorySettings")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Measure")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductStandard")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Pid");
-
-                    b.ToTable("Productlist");
-                });
-
-            modelBuilder.Entity("WMSAPI.Model.T_Itemdetails", b =>
-                {
-                    b.Property<int>("XID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Approvalnumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Quantity")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Turnoverbasket")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("XID");
-
-                    b.ToTable("Itemdetails");
-                });
-
-            modelBuilder.Entity("WMSAPI.Model.T_audit", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<DateTime>("Allocationdate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal>("Auditmoney")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Auditopinion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Auditstatus")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Audits");
-                });
-
-            modelBuilder.Entity("WMSAPI.Model.T_replenishment", b =>
-                {
-                    b.Property<int>("IDX")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("ReplenishDate")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Replenishodd")
-                        .HasColumnType("int");
-
-                    b.HasKey("IDX");
-
-                    b.ToTable("Replenishments");
-                });
-
-            modelBuilder.Entity("WMSAPI.Model.T_singlerow", b =>
-                {
-                    b.Property<int>("IDX")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Allocationdate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Allotcondition")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Allotpeople")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Auditstate")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Framnumber")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Requisition")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Transferred")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tuneout")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IDX");
-
-                    b.ToTable("Singlerows");
-                });
-
-            modelBuilder.Entity("WMSAPI.Model.W_Warehous", b =>
-                {
-                    b.Property<int>("Wid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("Arrangr")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DetailedAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("State")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SuperiorWarehouse")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WarehouseCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("WarehouseEntities")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("WarehouseName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WarehuoseAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Wid");
-
-                    b.ToTable("Warehous");
-                });
-
-            modelBuilder.Entity("WMSAPI.Model.Z_Arrival", b =>
+            modelBuilder.Entity("WMSAPI.Model.Arrival", b =>
                 {
                     b.Property<int>("Arrival_Id")
                         .ValueGeneratedOnAdd()
@@ -318,7 +84,99 @@ namespace WMSAPI.Migrations
                     b.ToTable("Arrival");
                 });
 
-            modelBuilder.Entity("WMSAPI.Model.Z_Inventorylist", b =>
+            modelBuilder.Entity("WMSAPI.Model.Audits", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("Allocationdate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Auditmoney")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Auditopinion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Auditstatus")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Audits");
+                });
+
+            modelBuilder.Entity("WMSAPI.Model.Distributor", b =>
+                {
+                    b.Property<int>("Sid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("SName")
+                        .HasMaxLength(20)
+                        .HasColumnType("int");
+
+                    b.Property<int>("Snumber")
+                        .HasMaxLength(30)
+                        .HasColumnType("int");
+
+                    b.HasKey("Sid");
+
+                    b.ToTable("Suppliers");
+                });
+
+            modelBuilder.Entity("WMSAPI.Model.Frmloss", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("FrmLossAudit")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FrmLossHandle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FrmLossID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FrmLossNum")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FrmLossTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Frmlosses");
+                });
+
+            modelBuilder.Entity("WMSAPI.Model.Goods", b =>
+                {
+                    b.Property<int>("Gid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("DescriptionGoods")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Rsesrvoirare")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Gid");
+
+                    b.ToTable("Goods");
+                });
+
+            modelBuilder.Entity("WMSAPI.Model.Inventorylist", b =>
                 {
                     b.Property<int>("Inventorylist_NId")
                         .ValueGeneratedOnAdd()
@@ -359,7 +217,31 @@ namespace WMSAPI.Migrations
                     b.ToTable("Inventorylist");
                 });
 
-            modelBuilder.Entity("WMSAPI.Model.Z_Material", b =>
+            modelBuilder.Entity("WMSAPI.Model.Itemdetails", b =>
+                {
+                    b.Property<int>("XID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Approvalnumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Quantity")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Turnoverbasket")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("XID");
+
+                    b.ToTable("Itemdetails");
+                });
+
+            modelBuilder.Entity("WMSAPI.Model.Material", b =>
                 {
                     b.Property<int>("Material_Id")
                         .ValueGeneratedOnAdd()
@@ -395,7 +277,52 @@ namespace WMSAPI.Migrations
                     b.ToTable("Material");
                 });
 
-            modelBuilder.Entity("WMSAPI.Model.Z_Procurement", b =>
+            modelBuilder.Entity("WMSAPI.Model.Mission", b =>
+                {
+                    b.Property<int>("Mid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("Hid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Mint")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("MissionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Sid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Tasknumber")
+                        .HasColumnType("int");
+
+                    b.HasKey("Mid");
+
+                    b.ToTable("Mission");
+                });
+
+            modelBuilder.Entity("WMSAPI.Model.Privilege", b =>
+                {
+                    b.Property<int>("Pid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("AId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("KId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Pid");
+
+                    b.ToTable("Privilege");
+                });
+
+            modelBuilder.Entity("WMSAPI.Model.Procurement", b =>
                 {
                     b.Property<int>("Procurement_PId")
                         .ValueGeneratedOnAdd()
@@ -420,7 +347,37 @@ namespace WMSAPI.Migrations
                     b.ToTable("Procurement");
                 });
 
-            modelBuilder.Entity("WMSAPI.Model.Z_Purchasing", b =>
+            modelBuilder.Entity("WMSAPI.Model.Productlist", b =>
+                {
+                    b.Property<int>("Pid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Classes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LnventorySettings")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Measure")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductStandard")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Pid");
+
+                    b.ToTable("Productlist");
+                });
+
+            modelBuilder.Entity("WMSAPI.Model.Purchasing", b =>
                 {
                     b.Property<int>("Purchasing_Id")
                         .ValueGeneratedOnAdd()
@@ -452,7 +409,61 @@ namespace WMSAPI.Migrations
                     b.ToTable("Purchasing");
                 });
 
-            modelBuilder.Entity("WMSAPI.Model.Z_Supplies", b =>
+            modelBuilder.Entity("WMSAPI.Model.Replenishments", b =>
+                {
+                    b.Property<int>("IDX")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("ReplenishDate")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Replenishodd")
+                        .HasColumnType("int");
+
+                    b.HasKey("IDX");
+
+                    b.ToTable("Replenishments");
+                });
+
+            modelBuilder.Entity("WMSAPI.Model.Singlerows", b =>
+                {
+                    b.Property<int>("IDX")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Allocationdate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Allotcondition")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Allotpeople")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Auditstate")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Framnumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Requisition")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Transferred")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tuneout")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IDX");
+
+                    b.ToTable("Singlerows");
+                });
+
+            modelBuilder.Entity("WMSAPI.Model.Supplies", b =>
                 {
                     b.Property<int>("Supplies_Id")
                         .ValueGeneratedOnAdd()
@@ -508,7 +519,43 @@ namespace WMSAPI.Migrations
                     b.ToTable("Supplies");
                 });
 
-            modelBuilder.Entity("WMSAPI.Model.Z_Workorder", b =>
+            modelBuilder.Entity("WMSAPI.Model.Warehous", b =>
+                {
+                    b.Property<int>("Wid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("Arrangr")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DetailedAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SuperiorWarehouse")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WarehouseCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("WarehouseEntities")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("WarehouseName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WarehuoseAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Wid");
+
+                    b.ToTable("Warehous");
+                });
+
+            modelBuilder.Entity("WMSAPI.Model.Workorder", b =>
                 {
                     b.Property<int>("workorder_Id")
                         .ValueGeneratedOnAdd()
@@ -544,7 +591,7 @@ namespace WMSAPI.Migrations
                     b.ToTable("Workorder");
                 });
 
-            modelBuilder.Entity("WMSAPI.Model.Z_product", b =>
+            modelBuilder.Entity("WMSAPI.Model.product", b =>
                 {
                     b.Property<int>("Product_Id")
                         .ValueGeneratedOnAdd()

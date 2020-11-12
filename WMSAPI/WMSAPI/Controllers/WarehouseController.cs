@@ -23,7 +23,7 @@ namespace WMSAPI.Controllers
         //添加仓库设置
         [HttpPost]
         [Route("/api/AddWarehuse")]
-        public int AddWarehuse([FromForm]Warehous warehous) 
+        public int AddWarehuse([FromForm] Warehous warehous)
         {
             int i = _Wmss.AddWarehous(warehous);
             return i;
