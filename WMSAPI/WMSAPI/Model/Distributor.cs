@@ -9,7 +9,7 @@ namespace WMSAPI.Model
     /// <summary>
     /// 供应商
     /// </summary>
-    public class S_supplier
+    public class Distributor
     {
         [Key]
         public int Sid { get; set; }//供应商id

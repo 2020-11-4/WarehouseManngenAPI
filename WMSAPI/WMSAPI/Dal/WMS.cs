@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using LinqToDB;
+using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Configuration;
 using SqlSugar;
 using System;
@@ -12,7 +13,7 @@ namespace WMSAPI.Dal
     public class WMS : IWMSS
     {
         //private readonly string _connectionString;
-        //public WMS(IConfiguration configuration) 
+        //public WMS(IConfiguration configuration)
         //{
         //    _connectionString = configuration.GetConnectionString("SqlServerContext");
         //}
@@ -24,17 +25,21 @@ namespace WMSAPI.Dal
                 IsAutoCloseConnection = true,
                 InitKeyType = InitKeyType.Attribute
             });
-
-        public int Add(Warehous warehous)
+        //添加仓库设置
+        public int AddWarehous(Warehous warehous)
         {
-            var list = db.Insertable(warehous).ExecuteCommand();
-            return list;
+            int i = db.Insertable(warehous).ExecuteCommand();
+            return i;
         }
-
-        public List<Warehous> GetWarehous()
+        //显示库区管理
+        public List<Goods> GetGoods()
         {
-            List<Warehous> lint = db.Queryable<Warehous>().ToList();
-            return lint;
+            var list = db.Queryable<Goods, Warehous>((st, sc) => new JoinQueryInfos(
+                JoinType.Left, st.Id == sc.Wid//可以用&&实现 on 条件 and
+              ))
+           //.Where((st,sc)=>sc.id>0) 多表条件用法
+           .Select<Goods>().ToList();
+            return  list;
         }
     }
 }

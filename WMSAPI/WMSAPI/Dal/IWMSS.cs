@@ -8,7 +8,9 @@ namespace WMSAPI.Dal
 {
    public interface IWMSS
     {
-        int Add(Warehous warehous);
-        List<Warehous> GetWarehous();
+        //添加仓库设置
+        int AddWarehous(Warehous warehous);
+        //显示库区管理
+        List<Goods> GetGoods();
     }
 }

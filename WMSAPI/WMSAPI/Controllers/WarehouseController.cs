@@ -20,20 +20,13 @@ namespace WMSAPI.Controllers
         {
             _Wmss = wmss;
         }
+        //添加仓库设置
         [HttpPost]
-        [Route("/api/Add")]
-        public int Add(Warehous warehous) 
+        [Route("/api/AddWarehuse")]
+        public int AddWarehuse([FromForm]Warehous warehous) 
         {
-            int i = _Wmss.Add(warehous);
+            int i = _Wmss.AddWarehous(warehous);
             return i;
-        }
-        [HttpGet]
-        [Route("/api/GetShow")]
-        public string GetShow() 
-        {
-            List<Warehous> list = _Wmss.GetWarehous();
-            var str = JsonConvert.SerializeObject(list);
-            return str;
         }
     }
 }
