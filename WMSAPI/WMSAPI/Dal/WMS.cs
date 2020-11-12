@@ -44,7 +44,7 @@ namespace WMSAPI.Dal
         public async Task<List<Z_CaiCha>> AOGShowAsync()
         {
 
-            var list = await (db.Queryable<Purchasing, Productlist,supplier>((st, sc, di) => new JoinQueryInfos(
+            var list = await (db.Queryable<Purchasing, Productlist,Suppliers>((st, sc, di) => new JoinQueryInfos(
               JoinType.Left,st.Supplier == sc.Pid,//可以用&&实现 on 条件 and
               JoinType.Left,st.Category == di.Sid
             ))
