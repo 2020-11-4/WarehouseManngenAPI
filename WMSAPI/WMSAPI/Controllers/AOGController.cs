@@ -10,13 +10,20 @@ namespace WMSAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class WMSControllers : ControllerBase
+    public class AOGController : ControllerBase
     {
         private IWMSS _Wmss;
-        public WMSControllers(IWMSS wmss)
+        public AOGController(IWMSS wmss)
         {
             _Wmss = wmss;
         }
 
+        [HttpGet]
+        [Route("/api/AOGShowAsync")]
+        public async Task<IActionResult> AOGShowAsync()
+        {
+
+            return Ok(await _Wmss.AOGShowAsync());
+        }
     }
 }

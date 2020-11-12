@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WMSAPI.Migrations
 {
-    public partial class Mationllls : Migration
+    public partial class migrationName : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -57,23 +57,6 @@ namespace WMSAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Audits", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Frmlosses",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FrmLossID = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FrmLossTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FrmLossNum = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FrmLossAudit = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FrmLossHandle = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Frmlosses", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -282,20 +265,6 @@ namespace WMSAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Suppliers",
-                columns: table => new
-                {
-                    Sid = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Snumber = table.Column<int>(type: "int", maxLength: 30, nullable: false),
-                    SName = table.Column<int>(type: "int", maxLength: 20, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Suppliers", x => x.Sid);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Supplies",
                 columns: table => new
                 {
@@ -371,9 +340,6 @@ namespace WMSAPI.Migrations
                 name: "Audits");
 
             migrationBuilder.DropTable(
-                name: "Frmlosses");
-
-            migrationBuilder.DropTable(
                 name: "Goods");
 
             migrationBuilder.DropTable(
@@ -408,9 +374,6 @@ namespace WMSAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "Singlerows");
-
-            migrationBuilder.DropTable(
-                name: "Suppliers");
 
             migrationBuilder.DropTable(
                 name: "Supplies");

@@ -34,11 +34,9 @@ namespace WMSAPI.Data
         public DbSet<Itemdetails>  Itemdetails { get; set; }
         public DbSet<Replenishments> Replenishments { get; set; }
         public DbSet<Singlerows> Singlerows { get; set; }
-        public DbSet<Distributor> Distributor { get; set; }
-        public DbSet<Frmloss> Frmlosses { get; set; }
+        public DbSet<supplier>  Suppliers { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Frmloss>().ToTable("Frmlosses");
             modelBuilder.Entity<Administrators>().ToTable("Administrators");
             modelBuilder.Entity<Goods>().ToTable("Goods");
             modelBuilder.Entity<Mission>().ToTable("Mission");
@@ -52,7 +50,7 @@ namespace WMSAPI.Data
             modelBuilder.Entity<Procurement>().ToTable("Procurement");
             modelBuilder.Entity<Inventorylist>().ToTable("Inventorylist");
             modelBuilder.Entity<product>().ToTable("product");
-            modelBuilder.Entity<Distributor>().ToTable("Suppliers");
+            modelBuilder.Entity<supplier>().ToTable("Suppliers");
             modelBuilder.Entity<Workorder>().ToTable("Workorder");
             modelBuilder.Entity<Singlerows>().ToTable("Singlerows");
             modelBuilder.Entity<Audits>().ToTable("Audits");

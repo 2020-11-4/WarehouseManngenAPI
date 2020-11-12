@@ -8,13 +8,8 @@ namespace WMSAPI.Dal
 {
    public interface IWMSS
     {
-        //添加仓库设置
-        Task<int>  AddWarehous(Warehous warehous);
-        //显示库区管理
-        Task<List<Goods>> GetGoods(string WarehouseName,string Rsesrvoirare);
-        //删除库区管理
-        Task<int> DelGoods(int GId);
-
-
+        int Add(Warehous warehous);
+        List<Warehous> GetWarehous();
+        Task<List<Z_CaiCha>> AOGShowAsync(); //
     }
 }
