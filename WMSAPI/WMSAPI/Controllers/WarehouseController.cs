@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 using Org.BouncyCastle.Asn1;
 using WMSAPI.Dal;
@@ -20,13 +21,22 @@ namespace WMSAPI.Controllers
         {
             _Wmss = wmss;
         }
-        //添加仓库设置
-        [HttpPost]
-        [Route("/api/AddWarehuse")]
-        public int AddWarehuse([FromForm] Warehous warehous)
+        ////添加仓库设置
+        //[HttpPost]
+        //[Route("/api/AddWarehuse")]
+        //public async Task<IActionResult> AddWarehuse([FromForm] Warehous warehous)
+        //{
+        //    var i = await _Wmss.AddWarehous(warehous);
+        //    return i;
+        //}
+        //显示库区管理
+        [HttpGet]
+        [Route("/api/GetGoods")]
+        public string GetGoods(string WarehouseName, string Rsesrvoirare) 
         {
-            int i = _Wmss.AddWarehous(warehous);
-            return i;
+            var list = _Wmss.GetGoods(WarehouseName,Rsesrvoirare);
+            string json = JsonConvert.SerializeObject(list);
+            return json;
         }
     }
 }

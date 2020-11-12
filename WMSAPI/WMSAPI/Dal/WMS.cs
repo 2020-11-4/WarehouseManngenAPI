@@ -1,6 +1,7 @@
 ﻿using LinqToDB;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using SqlSugar;
 using System;
 using System.Collections.Generic;
@@ -26,20 +27,27 @@ namespace WMSAPI.Dal
                 InitKeyType = InitKeyType.Attribute
             });
         //添加仓库设置
-        public int AddWarehous(Warehous warehous)
+        public async Task<int> AddWarehous(Warehous warehous)
         {
-            int i = db.Insertable(warehous).ExecuteCommand();
+            int i =await db.Insertable(warehous).ExecuteCommandAsync();
             return i;
         }
+        //删除库区管理
+        public async Task<int> DelGoods(int GId)
+        {
+            int i = await db.Deleteable<Goods>().Where(new Goods() { Gid = GId }).ExecuteCommandAsync();
+            return i;
+        }
+
         //显示库区管理
-        public List<Goods> GetGoods()
+        public async Task<List<Goods>> GetGoods(string WarehouseName, string Rsesrvoirare)
         {
             var list = db.Queryable<Goods, Warehous>((st, sc) => new JoinQueryInfos(
                 JoinType.Left, st.Id == sc.Wid//可以用&&实现 on 条件 and
               ))
-           //.Where((st,sc)=>sc.id>0) 多表条件用法
-           .Select<Goods>().ToList();
-            return list;
+           .Where((st, sc) => st.Rsesrvoirare == "Rsesrvoirare" && sc.WarehouseName == "WarehouseName") //多表条件用法
+           .Select<Goods>().ToListAsync();
+            return  (await list);
         }
     }
 }
