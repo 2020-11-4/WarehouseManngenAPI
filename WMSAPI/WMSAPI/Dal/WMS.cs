@@ -20,6 +20,7 @@ namespace WMSAPI.Dal
         //{
         //    _connectionString = configuration.GetConnectionString("SqlServerContext");
         //}
+
         SqlSugarClient db = new SqlSugarClient(
             new ConnectionConfig
             {
@@ -41,6 +42,20 @@ namespace WMSAPI.Dal
             return lint;
         }
 
+        //出库明细显示
+        public async Task<List<ckmx>> Clibraryshow()
+        {
+
+            var list = await (db.Queryable<product, Warehous, Suppliers, Inventorylist>((st, sc, di,mx) => new JoinQueryInfos(
+               JoinType.Left, st.Product_Id == sc.Wid,//可以用&&实现 on 条件 and
+               JoinType.Left, st.Product_Id == di.Sid,
+               JoinType.Left, st.Product_Id == mx.Inventorylist_NId
+             ))
+           //.Where((st,sc)=>sc.id>-0) 多表条件用法
+           .Select<ckmx>().ToListAsync()) ;
+
+            return list;
+        }
         public async Task<List<Z_CaiCha>> AOGShowAsync()
         {
 
@@ -48,7 +63,7 @@ namespace WMSAPI.Dal
               JoinType.Left,st.Supplier == sc.Pid,//可以用&&实现 on 条件 and
               JoinType.Left,st.Category == di.Sid
             ))
-           //.Where((st,sc)=>sc.id>0) 多表条件用法
+           //.Where((st,sc)=>sc.id>-0) 多表条件用法
            .Select<Z_CaiCha>().ToListAsync());
 
             return  list;
