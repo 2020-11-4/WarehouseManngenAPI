@@ -50,31 +50,8 @@ namespace WMSAPI.Model
         public class Suppliers
         {
             public int Sid { get; set; }//供应商id
-            public int Snumber { get; set; }//供应商编号
-            public int SName { get; set; }//供应商名称
-        }
-        /// <summary>
-        /// 入库明细表
-        /// </summary>
-        public class Inventorylist
-        {
-            public int Inventorylist_NId { get; set; } //主键
-
-            public int Iwarehouse { get; set; } //入库仓库
-
-            public int Icategory { get; set; } //货存类别
-
-            public int Icoding { get; set; } //货存编码
-
-            public string Ibatch { get; set; }//批次号
-
-            public string Iarticle { get; set; } //存货名称
-
-            public string Iunload { get; set; } //卸货区域
-
-            public string Iunit { get; set; } //计量单位
-
-            public string Istoreroom { get; set; } //入库类型
+            public string Snumber { get; set; }//供应商编号
+            public string SName { get; set; }//供应商名称
         }
     }
 }

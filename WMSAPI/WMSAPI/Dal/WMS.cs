@@ -47,9 +47,8 @@ namespace WMSAPI.Dal
         {
 
             var list = await (db.Queryable<product, Warehous, Suppliers, Inventorylist>((st, sc, di,mx) => new JoinQueryInfos(
-               JoinType.Left, st.Product_Id == sc.Wid,//可以用&&实现 on 条件 and
-               JoinType.Left, st.Product_Id == di.Sid,
-               JoinType.Left, st.Product_Id == mx.Inventorylist_NId
+               JoinType.Left, st.Pgoods == sc.Wid,//可以用&&实现 on 条件 and
+               JoinType.Left, st.Product_Id == di.Sid
              ))
            //.Where((st,sc)=>sc.id>-0) 多表条件用法
            .Select<ckmx>().ToListAsync()) ;
