@@ -41,17 +41,26 @@ namespace WMSAPI.Dal
             return lint;
         }
 
+
+        //显示到货信息
         public async Task<List<Z_CaiCha>> AOGShowAsync()
         {
 
-            var list = await (db.Queryable<Purchasing, Productlist,supplier>((st, sc, di) => new JoinQueryInfos(
-              JoinType.Left,st.Supplier == sc.Pid,//可以用&&实现 on 条件 and
-              JoinType.Left,st.Category == di.Sid
-            ))
+            var list = await (db.Queryable<Purchasing, Productlist, Supplierss>((st, sc, di) => new JoinQueryInfos(
+               JoinType.Left, st.Supplier == sc.Pid,//可以用&&实现 on 条件 and
+               JoinType.Left, st.Category == di.Sid
+             ))
            //.Where((st,sc)=>sc.id>0) 多表条件用法
-           .Select<Z_CaiCha>().ToListAsync());
-
+           .Select<Z_CaiCha>()).ToListAsync();
+            
             return  list;
+        }
+
+        //绑定产品品类
+        public async Task<List<Productlist>> CategoryAsync()
+        {
+            var list = await(db.Queryable<Productlist>().ToListAsync());
+            return list;
         }
     }
 }
