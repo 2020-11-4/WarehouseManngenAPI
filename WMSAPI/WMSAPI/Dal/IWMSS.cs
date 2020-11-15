@@ -10,7 +10,10 @@ namespace WMSAPI.Dal
     {
         int Add(Warehous warehous);
         List<Warehous> GetWarehous();
-        Task<List<Z_CaiCha>> AOGShowAsync(); //到货显示
-        Task<List<Productlist>> CategoryAsync();//品类绑定
+        //出库明细显示
+        Task<List<ckmx>> Clibraryshow();
+
+        Task<List<Z_CaiCha>> AOGShowAsync(); //
+
     }
 }
