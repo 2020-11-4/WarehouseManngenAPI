@@ -9,13 +9,13 @@ namespace WMSAPI.Model
     /// <summary>
     /// 供应商
     /// </summary>
-    public class Suppliers
+    public class Supplierss
     {
         [Key]
         public int Sid { get; set; }//供应商id
         [StringLength(30)]
-        public int Snumber { get; set; }//供应商编号
+        public string Snumber { get; set; }//供应商编号
         [StringLength(20)]
-        public int SName { get; set; }//供应商名称
+        public string SName { get; set; }//供应商名称
     }
 }
