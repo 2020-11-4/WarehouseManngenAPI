@@ -33,9 +33,7 @@ namespace WMSAPI.Model
         /// 供应商
         /// </summary>
         public int Sid { get; set; }//供应商id
-        public string Snumber { get; set; }
-    
-        public string SName { get; set; }//供应商名称
-        
+        public int Snumber { get; set; }//供应商编号
+        public int SName { get; set; }//供应商名称
     }
 }
