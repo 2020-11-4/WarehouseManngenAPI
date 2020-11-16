@@ -10,7 +10,7 @@ namespace WMSAPI.Model
     /// </summary>
     public class Warmarea
     {
-        public int Wid { get; set; }
+        public int WWid { get; set; }
         public string WName { get; set; }
     }
 }

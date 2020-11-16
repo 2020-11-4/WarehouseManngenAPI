@@ -16,7 +16,7 @@ namespace WMSAPI.Dal
         Task<List<Z_CaiCha>> AOGShowAsync();
 
         //显示仓库管理
-        Task<List<Goods>> GetGoods(string Rsesrvoirare,string WarehouseName);
+        Task<List<W_Warehuase>> GetGoods();
         //删除
         Task<int> DelGoods(int id);
     }
