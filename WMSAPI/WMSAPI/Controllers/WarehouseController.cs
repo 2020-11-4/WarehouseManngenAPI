@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Org.BouncyCastle.Asn1;
 using WMSAPI.Dal;
+using WMSAPI.Helper;
 using WMSAPI.Model;
 
 namespace WMSAPI.Controllers
@@ -25,16 +26,19 @@ namespace WMSAPI.Controllers
         [Route("/api/Add")]
         public async Task<int> Add(Warehous warehous) 
         {
-            int i = await _Wmss.Add(warehous);
+            int i = (await _Wmss.Add(warehous));
             return i;
         }
         //显示库区管理
         [HttpGet]
         [Route("/api/GetGoods")]
-        public async Task<IActionResult> GetGoods() 
+        public async Task<IActionResult> GetGoods(int page,int limit) 
         {
             List<W_Warehuase> goods = await _Wmss.GetGoods();
             string lint = JsonConvert.SerializeObject(goods);
+            var count = goods.Count;
+            goods = goods.Skip((page - 1) * limit).Take(limit).ToList();
+            JsonData json = new JsonData() { code = 0, msg = "", count = count + 1, data = goods };
             return Ok(lint);
         }
         //删除库区管理
