@@ -31,9 +31,9 @@ namespace WMSAPI.Controllers
         //显示库区管理
         [HttpGet]
         [Route("/api/GetGoods")]
-        public async Task<IActionResult> GetGoods(string Rsesrvoirare, string WarehouseName) 
+        public async Task<IActionResult> GetGoods() 
         {
-            List<Goods> goods = await _Wmss.GetGoods(Rsesrvoirare,WarehouseName);
+            List<W_Warehuase> goods = await _Wmss.GetGoods();
             string lint = JsonConvert.SerializeObject(goods);
             return Ok(lint);
         }

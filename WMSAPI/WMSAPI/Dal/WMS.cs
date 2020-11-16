@@ -59,14 +59,14 @@ namespace WMSAPI.Dal
             return  list;
         }
 
-        public async Task<List<Goods>> GetGoods(string Rsesrvoirare, string WarehouseName)
+        public async Task<List<W_Warehuase>> GetGoods()
         {
-            var list = await (db.Queryable<Goods, Warehous>((st, sc) => new JoinQueryInfos(
-               JoinType.Left, st.Id == sc.Wid
-
-             ))
-           .Where((st, sc) => sc.WarehouseName == WarehouseName && st.Rsesrvoirare == Rsesrvoirare)
-           .Select<Goods>().ToListAsync());
+            var list = await (db.Queryable<Goods, Warehous, Warmarea>((g, h,w) => new JoinQueryInfos(
+                JoinType.Left, g.Id == h.Wid,
+                 JoinType.Left, h.WareId == w.WWid
+              ))
+           //.Where((g, h) => g.Rsesrvoirare == Rsesrvoirare && h.WarehouseName == WarehouseName )
+           .Select<W_Warehuase>().ToListAsync()); ;
             return list;
         }
 
