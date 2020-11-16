@@ -9,7 +9,7 @@ namespace WMSAPI.Dal
    public interface IWMSS
     {
         //添加仓库设置
-        Task<int> Add(Warehous warehous);
+        int Add(Warehouse Warehouse);
         //出库明细显示
         Task<List<ckmx>> Clibraryshow();
 

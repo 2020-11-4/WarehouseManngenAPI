@@ -19,7 +19,7 @@ namespace WMSAPI.Data
         public DbSet<Mission> Mission { get; set; }
         public DbSet<Privilege> Privilege { get; set; }
         public DbSet<Productlist> Productlist { get; set; }
-        public DbSet<Warehous> Warehous { get; set; }
+        public DbSet<Warehouse> Warehous { get; set; }
 
         //张春雨
         public DbSet<Purchasing> Purchasing { get; set; }//采购表
@@ -42,7 +42,7 @@ namespace WMSAPI.Data
             modelBuilder.Entity<Mission>().ToTable("Mission");
             modelBuilder.Entity<Privilege>().ToTable("Privilege");
             modelBuilder.Entity<Productlist>().ToTable("Productlist");
-            modelBuilder.Entity<Warehous>().ToTable("Warehous");
+            modelBuilder.Entity<Warehouse>().ToTable("Warehous");
             modelBuilder.Entity<Purchasing>().ToTable("Purchasing");
             modelBuilder.Entity<Material>().ToTable("Material");
             modelBuilder.Entity<Supplies>().ToTable("Supplies");

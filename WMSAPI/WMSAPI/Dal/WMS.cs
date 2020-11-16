@@ -25,9 +25,9 @@ namespace WMSAPI.Dal
             });
 
         //添加仓库
-        public async Task<int> Add(Warehous warehous)
+        public int Add(Warehouse Warehouse)
         {
-            var list = await db.Insertable(warehous).ExecuteCommandAsync();
+            int list =  db.Insertable(Warehouse).ExecuteCommand();
             return list;
         }
 
@@ -36,7 +36,7 @@ namespace WMSAPI.Dal
         public async Task<List<ckmx>> Clibraryshow()
         {
 
-            var list = await (db.Queryable<product, Warehous, Supplierss, Inventorylist>((st, sc, di,mx) => new JoinQueryInfos(
+            var list = await (db.Queryable<product, Warehouse, Supplierss, Inventorylist>((st, sc, di,mx) => new JoinQueryInfos(
                JoinType.Left, st.Product_Id == sc.Wid,//可以用&&实现 on 条件 and
                JoinType.Left, st.Product_Id == di.Sid,
                JoinType.Left, st.Product_Id == mx.Inventorylist_NId
@@ -58,11 +58,11 @@ namespace WMSAPI.Dal
 
             return  list;
         }
-
+        
         public async Task<List<W_Warehuase>> GetGoods()
         {
-            var list = await (db.Queryable<Goods, Warehous, Warmarea>((g, h,w) => new JoinQueryInfos(
-                JoinType.Left, g.Id == h.Wid,
+            var list = await (db.Queryable<Goods, Warehouse, Warmarea>((g, h,w) => new JoinQueryInfos(
+                JoinType.Left, g.Id == h.id,
                  JoinType.Left, h.WareId == w.WWid
               ))
            //.Where((g, h) => g.Rsesrvoirare == Rsesrvoirare && h.WarehouseName == WarehouseName )
@@ -73,7 +73,6 @@ namespace WMSAPI.Dal
         public async Task<int> DelGoods(int id)
         {
             var aa =await db.Deleteable<Goods>().Where(it => it.Gid == id).ExecuteCommandAsync();
-
             return aa;
         }
     }
