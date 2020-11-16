@@ -36,7 +36,7 @@ namespace WMSAPI.Dal
         public async Task<List<ckmx>> Clibraryshow()
         {
 
-            var list = await (db.Queryable<product, Warehous, Suppliers, Inventorylist>((st, sc, di,mx) => new JoinQueryInfos(
+            var list = await (db.Queryable<product, Warehous, Supplierss, Inventorylist>((st, sc, di,mx) => new JoinQueryInfos(
                JoinType.Left, st.Product_Id == sc.Wid,//可以用&&实现 on 条件 and
                JoinType.Left, st.Product_Id == di.Sid,
                JoinType.Left, st.Product_Id == mx.Inventorylist_NId
@@ -49,7 +49,7 @@ namespace WMSAPI.Dal
         public async Task<List<Z_CaiCha>> AOGShowAsync()
         {
 
-            var list = await (db.Queryable<Purchasing, Productlist,Suppliers>((st, sc, di) => new JoinQueryInfos(
+            var list = await (db.Queryable<Purchasing, Productlist,Supplierss>((st, sc, di) => new JoinQueryInfos(
               JoinType.Left,st.Supplier == sc.Pid,//可以用&&实现 on 条件 and
               JoinType.Left,st.Category == di.Sid
             ))
