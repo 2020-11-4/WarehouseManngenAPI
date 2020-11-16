@@ -14,11 +14,6 @@ namespace WMSAPI.Controllers
     [ApiController]
     public class YHCKController : ControllerBase
     {
-        //private IWMSS vehicle;
-        //public YHCKController(IWMSS vehicleManagement)
-        //{
-        //    vehicle = vehicleManagement;
-        //}
         private IWMSS _Wmss;
         public YHCKController(IWMSS wmss)
         {
@@ -26,10 +21,12 @@ namespace WMSAPI.Controllers
         }
         //出库明细显示
         [HttpGet]
+        [Route("/api/Clibraryshow")]
         public async Task<IActionResult> Clibraryshow()
         {
-
-            return Ok(await _Wmss.Clibraryshow());
+            var Category = await _Wmss.Clibraryshow();
+            string json = JsonConvert.SerializeObject(Category);
+            return Ok(json);
         }
     }
 }

@@ -15,5 +15,7 @@ namespace WMSAPI.Dal
 
         Task<List<Z_CaiCha>> AOGShowAsync(); //
 
+        Task<List<Productlist>> CategoryAsync();//品类绑定
+
     }
 }

@@ -30,27 +30,26 @@ namespace WMSAPI.Model
             public int Pgoods { get; set; } //关联仓库表
         }
         /// <summary>
-        /// 仓库表
+        /// 货物表
         /// </summary>
-        public class Warehous
+        public class Goods
         {
-            public int Wid { get; set; }//主键id
-            public string SuperiorWarehouse { get; set; }//上级仓库
-            public string WarehouseName { get; set; }//当前仓库名称
-            public string WarehouseCode { get; set; }//仓库编号
-            public int Arrangr { get; set; }//排序
-            public string WarehuoseAddress { get; set; }//仓库地址
-            public string DetailedAddress { get; set; }//详细地址
-            public bool WarehouseEntities { get; set; }//实体仓库
-            public bool State { get; set; }//当前状态
+            [Key]
+            public int Gid { get; set; }//主键Id
+            public int Id { get; set; }//仓库id
+            public string Rsesrvoirare { get; set; }//库区
+            public string DescriptionGoods { get; set; }//仓库代码
         }
         /// <summary>
         /// 供应商
         /// </summary>
-        public class Suppliers
+        public class Supplierss
         {
+            [Key]
             public int Sid { get; set; }//供应商id
+            [StringLength(30)]
             public string Snumber { get; set; }//供应商编号
+            [StringLength(20)]
             public string SName { get; set; }//供应商名称
         }
     }
