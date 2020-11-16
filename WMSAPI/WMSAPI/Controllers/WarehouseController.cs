@@ -20,21 +20,28 @@ namespace WMSAPI.Controllers
         {
             _Wmss = wmss;
         }
-
+        //添加仓库管理
         [HttpPost]
         [Route("/api/Add")]
-        public int Add(Warehous warehous) 
+        public async Task<int> Add(Warehous warehous) 
         {
-            int i = _Wmss.Add(warehous);
+            int i = await _Wmss.Add(warehous);
             return i;
         }
+        //显示库区管理
         [HttpGet]
-        [Route("/api/GetShow")]
-        public string GetShow() 
+        [Route("/api/GetGoods")]
+        public async Task<IActionResult> GetGoods(string Rsesrvoirare, string WarehouseName) 
         {
-            List<Warehous> list = _Wmss.GetWarehous();
-            var str = JsonConvert.SerializeObject(list);
-            return str;
+            List<Goods> goods = await _Wmss.GetGoods(Rsesrvoirare,WarehouseName);
+            string lint = JsonConvert.SerializeObject(goods);
+            return Ok(lint);
+        }
+        //删除库区管理
+        public async Task<IActionResult> DelGoods(int id) 
+        {
+            int i = await _Wmss.DelGoods(id);
+            return Ok(i);
         }
     }
 }
