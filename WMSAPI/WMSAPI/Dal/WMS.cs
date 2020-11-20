@@ -36,8 +36,8 @@ namespace WMSAPI.Dal
         public async Task<List<ckmx>> Clibraryshow()
         {
 
-            var list = await (db.Queryable<product,W_Warehuase, Supplierss, Inventorylist>((st, sc, di,mx) => new JoinQueryInfos(
-               JoinType.Left, st.Product_Id == sc.id,//可以用&&实现 on 条件 and
+            var list = await (db.Queryable<product, Warehous, Supplierss, Inventorylist>((st, sc, di,mx) => new JoinQueryInfos(
+               JoinType.Left, st.Product_Id == sc.Wid,//可以用&&实现 on 条件 and
                JoinType.Left, st.Product_Id == di.Sid,
                JoinType.Left, st.Product_Id == mx.Inventorylist_NId
              ))
@@ -46,25 +46,6 @@ namespace WMSAPI.Dal
 
             return list;
         }
-
-        public async Task<List<W_Warehuase>> GetGoods()
-        {
-            var list = await (db.Queryable<Goods, Warehouse, Warmarea>((g, h, w) => new JoinQueryInfos(
-                JoinType.Left, g.Id == h.id,
-                 JoinType.Left, h.WareId == w.WWid
-              ))
-           //.Where((g, h) => g.Rsesrvoirare == Rsesrvoirare && h.WarehouseName == WarehouseName )
-           .Select<W_Warehuase>().ToListAsync()); ;
-            return list;
-        }
-
-
-
-
-
-
-
-        //到货
         public async Task<List<Z_CaiCha>> AOGShowAsync()
         {
             var list = await (db.Queryable<Purchasing, Productlist, Supplierss>((st, sc, di) => new JoinQueryInfos(
