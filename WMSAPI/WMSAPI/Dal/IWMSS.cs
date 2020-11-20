@@ -13,6 +13,15 @@ namespace WMSAPI.Dal
         //出库明细显示
         Task<List<ckmx>> Clibraryshow();
 
+        //库区绑定下拉
+        Task<List<Warmarea>> KQbang();
+
+        //采购退货任务
+        Task<List<CGreturned>> CGreturnedshow();
+
+        //采购退货任务详情
+        Task<List<particulars>> particularsshow();
+
         Task<List<Z_CaiCha>> AOGShowAsync();
 
         //显示仓库管理

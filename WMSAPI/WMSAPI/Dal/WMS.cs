@@ -36,13 +36,46 @@ namespace WMSAPI.Dal
         public async Task<List<ckmx>> Clibraryshow()
         {
 
-            var list = await (db.Queryable<product, Warehous, Supplierss, Inventorylist>((st, sc, di,mx) => new JoinQueryInfos(
-               JoinType.Left, st.Product_Id == sc.Wid,//可以用&&实现 on 条件 and
-               JoinType.Left, st.Product_Id == di.Sid,
-               JoinType.Left, st.Product_Id == mx.Inventorylist_NId
+            var list = await (db.Queryable<product, Warmarea, Supplierss>((st, sc, di) => new JoinQueryInfos(
+               JoinType.Left, st.Pgoods == sc.WWid,//可以用&&实现 on 条件 and
+               JoinType.Left, st.Product_Id == di.Sid
              ))
            //.Where((st,sc)=>sc.id>-0) 多表条件用法
            .Select<ckmx>().ToListAsync()) ;
+
+            return list;
+        }
+        //采购退货任务
+        public async Task<List<CGreturned>> CGreturnedshow()
+        {
+
+            var list = await (db.Queryable<Mission, Purchasing, Supplierss,product>((st, sc, di,cp) => new JoinQueryInfos(
+               JoinType.Left, st.Hid == sc.Purchasing_Id,//可以用&&实现 on 条件 and
+               JoinType.Left, st.Sid == di.Sid,
+               JoinType.Left, st.Mid == cp.Product_Id
+             ))
+           //.Where((st,sc)=>sc.id>-0) 多表条件用法
+           .Select<CGreturned>().ToListAsync());
+
+            return list;
+        }
+        //采购退货任务详情
+        public async Task<List<particulars>> particularsshow()
+        {
+
+            var list = await (db.Queryable<product, Supplies>((st, sc) => new JoinQueryInfos(
+                JoinType.Left, st.Pgoods == sc.Supplies_Id//可以用&&实现 on 条件 and
+              ))
+           //.Where((st,sc)=>sc.id>-0) 多表条件用法
+           .Select<particulars>().ToListAsync());
+
+            return list;
+        }
+        //库区绑定下拉
+        public async Task<List<Warmarea>> KQbang()
+        {
+
+            var list = await db.Queryable<Warmarea>().ToListAsync();
 
             return list;
         }
