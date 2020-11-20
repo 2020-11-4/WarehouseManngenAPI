@@ -46,16 +46,16 @@ namespace WMSAPI.Dal
 
             return list;
         }
+
         public async Task<List<Z_CaiCha>> AOGShowAsync()
         {
 
-            var list = await (db.Queryable<Purchasing, Productlist,Supplierss>((st, sc, di) => new JoinQueryInfos(
+            var list = await (db.Queryable<Purchasing, Productlist,supplier>((st, sc, di) => new JoinQueryInfos(
               JoinType.Left,st.Supplier == sc.Pid,//可以用&&实现 on 条件 and
               JoinType.Left,st.Category == di.Sid
             ))
            //.Where((st,sc)=>sc.id>0) 多表条件用法
            .Select<Z_CaiCha>().ToListAsync());
-
             return  list;
         }
         
@@ -68,12 +68,6 @@ namespace WMSAPI.Dal
            //.Where((g, h) => g.Rsesrvoirare == Rsesrvoirare && h.WarehouseName == WarehouseName )
            .Select<W_Warehuase>().ToListAsync()); ;
             return list;
-        }
-
-        public async Task<int> DelGoods(int id)
-        {
-            var aa =await db.Deleteable<Goods>().Where(it => it.Gid == id).ExecuteCommandAsync();
-            return aa;
         }
     }
 }

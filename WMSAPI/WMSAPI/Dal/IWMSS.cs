@@ -8,12 +8,12 @@ namespace WMSAPI.Dal
 {
    public interface IWMSS
     {
-        //添加仓库设置
-        int Add(Warehouse Warehouse);
+        int Add(Warehous warehous);
+        List<Warehous> GetWarehous();
         //出库明细显示
         Task<List<ckmx>> Clibraryshow();
 
-        Task<List<Z_CaiCha>> AOGShowAsync();
+        Task<List<Z_CaiCha>> AOGShowAsync(); //
 
         //显示仓库管理
         Task<List<W_Warehuase>> GetGoods();

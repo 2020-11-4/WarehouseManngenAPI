@@ -8,7 +8,7 @@ namespace WMSAPI.Model
     public class Z_CaiCha
     {
         /// <summary>
-        /// 采购表
+        /// 采购表Purchasing
         /// </summary>
         public int Purchasing_Id { get; set; } //主键
         public string Ordernumber { get; set; }//采购单号
@@ -33,7 +33,9 @@ namespace WMSAPI.Model
         /// 供应商
         /// </summary>
         public int Sid { get; set; }//供应商id
-        public int Snumber { get; set; }//供应商编号
-        public int SName { get; set; }//供应商名称
+        public string Snumber { get; set; }
+    
+        public string SName { get; set; }//供应商名称
+        
     }
 }
