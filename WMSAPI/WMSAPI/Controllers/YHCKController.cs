@@ -19,6 +19,9 @@ namespace WMSAPI.Controllers
         {
             _Wmss = wmss;
         }
+
+        
+
         //出库明细显示
         [HttpGet]
         [Route("/api/Clibraryshow")]
@@ -28,5 +31,6 @@ namespace WMSAPI.Controllers
             string json = JsonConvert.SerializeObject(Category);
             return Ok(json);
         }
+
     }
 }

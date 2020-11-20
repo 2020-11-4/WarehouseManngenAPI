@@ -5,8 +5,27 @@ using System.Threading.Tasks;
 
 namespace WMSAPI.Model
 {
-    public class Z_CaiCha
+    public class Z_Kuai
     {
+
+        /// <summary>
+        /// 到货表
+        /// </summary>
+        public int Arrival_Id { get; set; } //主键
+        public string Arrivalregistration { get; set; } //到货登记号
+        public int Anumbers { get; set; } //采购单号
+        public string Atype { get; set; } //产品类型
+        public DateTime Adelivery { get; set; } //到货日期
+        public string AddType { get; set; } //添加类型
+
+        /// <summary>
+        /// 供应商Supplierss
+        /// </summary>
+        public int Sid { get; set; }//供应商id
+        public string Snumber { get; set; }
+        public string SName { get; set; }//供应商名称
+
+
         /// <summary>
         /// 采购表Purchasing
         /// </summary>
@@ -28,31 +47,5 @@ namespace WMSAPI.Model
         public string ProductStandard { get; set; }//产品规格
         public string Measure { get; set; }//计量单位
         public int LnventorySettings { get; set; }//库存设置
-
-        /// <summary>
-        /// 供应商
-        /// </summary>
-        public int Sid { get; set; }//供应商id
-        public string Snumber { get; set; }
-    
-        public string SName { get; set; }//供应商名称
-
-
-        /// <summary>
-        /// 原料表
-        /// </summary>
-
-
-        public int Material_Id { get; set; }//主键
-        public string Mcoding { get; set; }//原料编码
-        public string MName { get; set; } //原料名称
-        public string Mwarm { get; set; } //存放温区
-        public string Mspecification { get; set; }//原料规格
-        public string Mquantity { get; set; } //采购数量
-        public string Mstorage { get; set; }//入库数量
-        public int MArrival { get; set; } //关联到货表
-
-
-        
     }
 }

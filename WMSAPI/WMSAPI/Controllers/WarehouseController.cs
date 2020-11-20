@@ -41,11 +41,6 @@ namespace WMSAPI.Controllers
             JsonData json = new JsonData() { code = 0, msg = "", count = count + 1, data = goods };
             return Ok(lint);
         }
-        //删除库区管理
-        public async Task<IActionResult> DelGoods(int id) 
-        {
-            int i = await _Wmss.DelGoods(id);
-            return Ok(i);
-        }
+        
     }
 }

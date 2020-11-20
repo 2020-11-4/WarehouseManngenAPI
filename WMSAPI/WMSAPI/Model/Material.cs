@@ -33,5 +33,7 @@ namespace WMSAPI.Model
 
         [StringLength(30)]
         public string Mstorage { get; set; }//入库数量
+
+        public int MArrival { get; set; } //关联到货表
     }
 }
