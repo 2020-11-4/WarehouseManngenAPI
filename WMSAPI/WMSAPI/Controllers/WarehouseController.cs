@@ -24,9 +24,9 @@ namespace WMSAPI.Controllers
         //添加仓库管理
         [HttpPost]
         [Route("/api/Add")]
-        public async Task<int> Add(Warehous warehous) 
+        public int Add([FromBody]Warehouse Warehouse) 
         {
-            int i = (await _Wmss.Add(warehous));
+            int i =  _Wmss.Add(Warehouse);
             return i;
         }
         //显示库区管理
@@ -41,11 +41,6 @@ namespace WMSAPI.Controllers
             JsonData json = new JsonData() { code = 0, msg = "", count = count + 1, data = goods };
             return Ok(lint);
         }
-        //删除库区管理
-        public async Task<IActionResult> DelGoods(int id) 
-        {
-            int i = await _Wmss.DelGoods(id);
-            return Ok(i);
-        }
+        
     }
 }

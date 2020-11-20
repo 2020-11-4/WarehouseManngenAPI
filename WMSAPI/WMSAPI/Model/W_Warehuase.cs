@@ -7,7 +7,7 @@ namespace WMSAPI.Model
 {
     public class W_Warehuase
     {
-        public int Wid { get; set; }//主键id
+        public int id { get; set; }//主键id
         public string SuperiorWarehouse { get; set; }//上级仓库
         public string WarehouseName { get; set; }//当前仓库名称
         public string WarehouseCode { get; set; }//仓库编号

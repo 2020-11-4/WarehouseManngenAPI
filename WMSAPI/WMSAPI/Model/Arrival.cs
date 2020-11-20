@@ -22,11 +22,6 @@ namespace WMSAPI.Model
         public int Anumbers { get; set; } //采购单号
 
 
-        public int Asupplier { get; set; } //供货商
-
-
-        public int Acategory { get; set; } //品类
-
         [StringLength(20)]
         public string Atype { get; set; } //产品类型
 

@@ -25,9 +25,9 @@ namespace WMSAPI.Dal
             });
 
         //添加仓库
-        public async Task<int> Add(Warehous warehous)
+        public int Add(Warehouse Warehouse)
         {
-            var list = await db.Insertable(warehous).ExecuteCommandAsync();
+            int list =  db.Insertable(Warehouse).ExecuteCommand();
             return list;
         }
 
@@ -36,66 +36,21 @@ namespace WMSAPI.Dal
         public async Task<List<ckmx>> Clibraryshow()
         {
 
-            var list = await (db.Queryable<product, Warmarea, Supplierss>((st, sc, di) => new JoinQueryInfos(
-               JoinType.Left, st.Pgoods == sc.WWid,//可以用&&实现 on 条件 and
-               JoinType.Left, st.Product_Id == di.Sid
+            var list = await (db.Queryable<product,W_Warehuase, Supplierss, Inventorylist>((st, sc, di,mx) => new JoinQueryInfos(
+               JoinType.Left, st.Product_Id == sc.id,//可以用&&实现 on 条件 and
+               JoinType.Left, st.Product_Id == di.Sid,
+               JoinType.Left, st.Product_Id == mx.Inventorylist_NId
              ))
            //.Where((st,sc)=>sc.id>-0) 多表条件用法
            .Select<ckmx>().ToListAsync()) ;
 
             return list;
         }
-        //采购退货任务
-        public async Task<List<CGreturned>> CGreturnedshow()
-        {
-
-            var list = await (db.Queryable<Mission, Purchasing, Supplierss,product>((st, sc, di,cp) => new JoinQueryInfos(
-               JoinType.Left, st.Hid == sc.Purchasing_Id,//可以用&&实现 on 条件 and
-               JoinType.Left, st.Sid == di.Sid,
-               JoinType.Left, st.Mid == cp.Product_Id
-             ))
-           //.Where((st,sc)=>sc.id>-0) 多表条件用法
-           .Select<CGreturned>().ToListAsync());
-
-            return list;
-        }
-        //采购退货任务详情
-        public async Task<List<particulars>> particularsshow()
-        {
-
-            var list = await (db.Queryable<product, Supplies>((st, sc) => new JoinQueryInfos(
-                JoinType.Left, st.Pgoods == sc.Supplies_Id//可以用&&实现 on 条件 and
-              ))
-           //.Where((st,sc)=>sc.id>-0) 多表条件用法
-           .Select<particulars>().ToListAsync());
-
-            return list;
-        }
-        //库区绑定下拉
-        public async Task<List<Warmarea>> KQbang()
-        {
-
-            var list = await db.Queryable<Warmarea>().ToListAsync();
-
-            return list;
-        }
-        public async Task<List<Z_CaiCha>> AOGShowAsync()
-        {
-
-            var list = await (db.Queryable<Purchasing, Productlist,Supplierss>((st, sc, di) => new JoinQueryInfos(
-              JoinType.Left,st.Supplier == sc.Pid,//可以用&&实现 on 条件 and
-              JoinType.Left,st.Category == di.Sid
-            ))
-           //.Where((st,sc)=>sc.id>0) 多表条件用法
-           .Select<Z_CaiCha>().ToListAsync());
-
-            return  list;
-        }
 
         public async Task<List<W_Warehuase>> GetGoods()
         {
-            var list = await (db.Queryable<Goods, Warehous, Warmarea>((g, h,w) => new JoinQueryInfos(
-                JoinType.Left, g.Id == h.Wid,
+            var list = await (db.Queryable<Goods, Warehouse, Warmarea>((g, h, w) => new JoinQueryInfos(
+                JoinType.Left, g.Id == h.id,
                  JoinType.Left, h.WareId == w.WWid
               ))
            //.Where((g, h) => g.Rsesrvoirare == Rsesrvoirare && h.WarehouseName == WarehouseName )
@@ -103,11 +58,97 @@ namespace WMSAPI.Dal
             return list;
         }
 
-        public async Task<int> DelGoods(int id)
-        {
-            var aa =await db.Deleteable<Goods>().Where(it => it.Gid == id).ExecuteCommandAsync();
 
-            return aa;
+
+
+
+
+
+        //到货
+        public async Task<List<Z_CaiCha>> AOGShowAsync()
+        {
+            var list = await (db.Queryable<Purchasing, Productlist, Supplierss>((st, sc, di) => new JoinQueryInfos(
+              JoinType.Left,st.Supplier == sc.Pid,//可以用&&实现 on 条件 and
+              JoinType.Left,st.Category == di.Sid
+            ))
+           //.Where((st,sc)=>sc.id>0) 多表条件用法
+           .Select<Z_CaiCha>().ToListAsync());
+            return  list;
+        }
+        
+        //登记详情
+        public async Task<List<Z_CaiCha>> RegistrationAsync(int XId)
+        {
+            var list =await (db.Queryable<Material, Purchasing>((st, sc) => new JoinQueryInfos(
+                  JoinType.Left, st.MArrival == sc.Purchasing_Id
+                  )).Where(st => st.MArrival == XId).Select<Z_CaiCha>().ToListAsync());
+
+            return list;
+        }
+
+        //绑定库区
+        public async Task<List<Warehouse>> ReserAsync()
+        {
+            var list =await db.Queryable<Warehouse>().ToListAsync();
+            return list;
+        }
+
+        //绑定品类
+        public async Task<List<Productlist>> CategoryAsync()
+        {
+            var list =await (db.Queryable<Productlist>().ToListAsync());
+            return list;
+        }
+
+        //快捷到货
+        public async Task<List<Supplies>> SwiftAsync()
+        {
+
+            var list =await  db.Queryable<Supplies>().ToListAsync();
+
+            //var list =await  db.Queryable<Supplies, Purchasing, Supplierss>((st, sc, sl) => new JoinQueryInfos(
+            //              JoinType.Left, st.Munitprice == sc.Purchasing_Id,
+            //              JoinType.Left, sc.Supplier == sl.Sid
+            //        )).Select<Z_Kuai>().ToListAsync();
+
+            return list;
+        }
+
+        //快捷删除
+        public async Task<int> DelkaiAsync(int DId)
+        {
+            var list =await  db.Deleteable<Supplies>().Where(st => st.Supplies_Id == DId).ExecuteCommandAsync();
+            return list;
+        }
+
+        //到货记录
+        public async Task<List<Z_Kuai>> ReceivingAsync()
+        {
+            var list =await  db.Queryable<Arrival, Purchasing, Supplierss, Productlist>((st, sc, sl, sq) => new JoinQueryInfos(
+                        JoinType.Left, st.Anumbers == sc.Purchasing_Id,
+                        JoinType.Left, sc.Supplier == sl.Sid,
+                        JoinType.Left, sc.Category == sq.Pid
+                     )).Select<Z_Kuai>().ToListAsync();
+
+            return list;
+        }
+
+        //快捷到货登记
+        public async Task<List<Material>> CheckinAsync()
+        {
+            var list =await  db.Queryable<Material>().ToListAsync();
+            return list;
+        }
+
+        //绑定
+        public async Task<List<Z_Kuai>> BindingAsync()
+        {
+            var list = await db.Queryable<Arrival, Purchasing, Supplierss>((st, sc, sl) => new JoinQueryInfos(
+                      JoinType.Left, st.Anumbers == sc.Purchasing_Id,
+                      JoinType.Left, sc.Supplier == sl.Sid
+                   )).Select<Z_Kuai>().ToListAsync();
+
+            return list;
         }
     }
 }
