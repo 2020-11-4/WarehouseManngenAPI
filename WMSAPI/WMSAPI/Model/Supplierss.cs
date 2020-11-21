@@ -16,6 +16,6 @@ namespace WMSAPI.Model
         [StringLength(30)]
         public string Snumber { get; set; }//供应商编号
         [StringLength(20)]
-        public string SName { get; set; }//供应商名称
+        public string SName { get; set; }//供应商名称  
     }
 }

@@ -11,6 +11,7 @@ namespace WMSAPI.Model
     /// </summary>
     public class Warehouse
     {
+        [Key]
         public int id { get; set; }//主键id
         public string SuperiorWarehouse { get; set; }//上级仓库
         public string WarehouseName { get; set; }//当前仓库名称

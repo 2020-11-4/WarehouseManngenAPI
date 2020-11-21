@@ -24,47 +24,53 @@ namespace WMSAPI.Dal
                 InitKeyType = InitKeyType.Attribute
             });
 
+        //调拨单列表
+        public async Task< List<Singlerows>>GetT_Singlerows()
+        {
+            var list = await (db.Queryable<Singlerows, Warehouse>((sl, wh) => new JoinQueryInfos(JoinType.Left, sl.IDX == wh.id))
+                  //.Where((sl, wh) => sl.IDX > 0).ToList();
+                  .Select<Singlerows>().ToListAsync());
+
+            //var list = await db.SqlQueryable<Singlerows>(@"select *from Singlerows inner join Warmarea on Singlerows.IDX=Warmarea.WWid")
+            //    .ToListAsync();
+            return list;
+        }
+         
+        //调拨物品详情
+        public async Task<List<Merging>> GetT_Merging()
+        {
+            //var list = await (db.Queryable<Itemdetails,product>((It,wh)=>new JoinQueryInfos(JoinType.Left,It.XID==wh.Product_Id))
+            //    .Select<Itemdetails>().ToListAsync());
+            var list = await db.Queryable<Itemdetails, product>((it,su)=>new JoinQueryInfos(JoinType.Left,it.XID==su.Product_Id))
+                .Select<Merging>().ToListAsync();
+            return list;
+        }
+        //补货需求列表
+        public async Task<List<Replenishments>> GetT_Replenishments()
+        {
+            var list =await db.Queryable<Replenishments>()
+                .Select<Replenishments>().ToListAsync();
+            return list;
+        }
+        //补货需求详情
+        public async Task<List<Orderdetail>> GetT_Orderdetail()
+        {
+            var list = await db.Queryable<Replenishmentpp, Shang>((it, su) => new JoinQueryInfos(JoinType.Left, it.IDX == su.SId))
+                 .Select<Orderdetail>().ToListAsync();
+            return list;
+        }
+        //调拨审核
+        //public async Task<List<Audits>> GetT_Audits()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
         //添加仓库
         public int Add(Warehouse Warehouse)
         {
             int list =  db.Insertable(Warehouse).ExecuteCommand();
             return list;
         }
-
-
-        //出库明细显示
-        public async Task<List<ckmx>> Clibraryshow()
-        {
-
-            var list = await (db.Queryable<product,W_Warehuase, Supplierss, Inventorylist>((st, sc, di,mx) => new JoinQueryInfos(
-               JoinType.Left, st.Product_Id == sc.id,//可以用&&实现 on 条件 and
-               JoinType.Left, st.Product_Id == di.Sid,
-               JoinType.Left, st.Product_Id == mx.Inventorylist_NId
-             ))
-           //.Where((st,sc)=>sc.id>-0) 多表条件用法
-           .Select<ckmx>().ToListAsync()) ;
-
-            return list;
-        }
-
-        public async Task<List<W_Warehuase>> GetGoods()
-        {
-            var list = await (db.Queryable<Goods, Warehouse, Warmarea>((g, h, w) => new JoinQueryInfos(
-                JoinType.Left, g.Id == h.id,
-                 JoinType.Left, h.WareId == w.WWid
-              ))
-           //.Where((g, h) => g.Rsesrvoirare == Rsesrvoirare && h.WarehouseName == WarehouseName )
-           .Select<W_Warehuase>().ToListAsync()); ;
-            return list;
-        }
-
-
-
-
-
-
-
-        //到货
         public async Task<List<Z_CaiCha>> AOGShowAsync()
         {
             var list = await (db.Queryable<Purchasing, Productlist, Supplierss>((st, sc, di) => new JoinQueryInfos(
@@ -150,5 +156,59 @@ namespace WMSAPI.Dal
 
             return list;
         }
+
+        public int AddWarehous(Warehouse warehous)
+        {
+            throw new NotImplementedException();
+        }
+        //出库明细显示
+        public async Task<List<ckmx>> Clibraryshow()
+        {
+
+            var list = await (db.Queryable<product, Warmarea, Supplierss>((st, sc, di) => new JoinQueryInfos(
+               JoinType.Left, st.Pgoods == sc.WWid,//可以用&&实现 on 条件 and
+               JoinType.Left, st.Product_Id == di.Sid
+             ))
+           //.Where((st,sc)=>sc.id>-0) 多表条件用法
+           .Select<ckmx>().ToListAsync());
+
+            return list;
+        }
+
+        //采购退货任务
+        public async Task<List<CGreturned>> CGreturnedshow()
+        {
+
+            var list = await (db.Queryable<Mission, Purchasing, Supplierss, product>((st, sc, di, cp) => new JoinQueryInfos(
+                JoinType.Left, st.Hid == sc.Purchasing_Id,//可以用&&实现 on 条件 and
+                JoinType.Left, st.Sid == di.Sid,
+                JoinType.Left, st.Mid == cp.Product_Id
+              ))
+           //.Where((st,sc)=>sc.id>-0) 多表条件用法
+           .Select<CGreturned>().ToListAsync());
+
+            return list;
+        }
+        //采购退货任务详情
+        public async Task<List<particulars>> particularsshow()
+        {
+
+            var list = await (db.Queryable<product, Supplies>((st, sc) => new JoinQueryInfos(
+                JoinType.Left, st.Pgoods == sc.Supplies_Id//可以用&&实现 on 条件 and
+              ))
+           //.Where((st,sc)=>sc.id>-0) 多表条件用法
+           .Select<particulars>().ToListAsync());
+
+            return list;
+        }
+        //库区绑定下拉
+        public async Task<List<Warmarea>> KQbang()
+        {
+
+            var list = await db.Queryable<Warmarea>().ToListAsync();
+
+            return list;
+        }
+
     }
 }

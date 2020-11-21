@@ -12,11 +12,11 @@ namespace WMSAPI.Model
     public class Itemdetails
     {
         [Key]
-        public int XID { get; set; }//序号
+        public int XID { get; set; }//主键Id序号
         public string Quantity { get; set; }//申请数量
         public string Approvalnumber { get; set; }//审批数量
-        public string Turnoverbasket { get; set; }//周转筐
-        public string Image { get; set; }//图片   
+        public string Turnoverbasket { get; set; }//已出库数量
+        public string Image { get; set; }// 周转筐  
        
     }
 }
