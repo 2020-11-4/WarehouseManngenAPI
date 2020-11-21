@@ -11,9 +11,9 @@ namespace WMSAPI.Model
     /// </summary>
     public class Singlerows
     {
-        [Key]
-        public int IDX { get; set; }  //序号       
-        public int Requisition { get; set; }//调拨单号
+        [Key] 
+        public int IDX { get; set; }  //主键Id序号      
+        public string Requisition { get; set; }//调拨单号
         public string Tuneout { get; set; }//调出仓库
         public string Transferred { get; set; }//调入仓库
         public string Allocationdate { get; set; }//调拨日期

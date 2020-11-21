@@ -36,7 +36,7 @@ namespace WMSAPI.Controllers
             }
             if (!string.IsNullOrEmpty(CGong))
             {
-                AOGShow = AOGShow.Where(st => st.SName.Contains(CGong)).ToList();
+                AOGShow = AOGShow.Where(s => s.SName.Contains(CGong)).ToList();
             }
             if (!string.IsNullOrEmpty(CRen))
             {

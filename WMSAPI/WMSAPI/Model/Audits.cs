@@ -12,7 +12,7 @@ namespace WMSAPI.Model
     public class Audits
     {
         [Key]
-        public int Id { get; set; }
+        public int Id { get; set; }//主键Id序号
         public decimal Auditmoney { get; set; }//审批金额
         public bool Auditstatus { get; set; }//审核状态
         public string Auditopinion { get; set; }//审核意见

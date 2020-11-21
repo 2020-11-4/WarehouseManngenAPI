@@ -21,8 +21,7 @@ namespace WMSAPI.Controllers
         {
             _Wmss = wmss;
         }
-        //添加仓库管理
-        [HttpPost]
+
         [Route("/api/Add")]
         public int Add([FromBody]Warehouse Warehouse) 
         {
@@ -30,17 +29,18 @@ namespace WMSAPI.Controllers
             return i;
         }
         //显示库区管理
-        [HttpGet]
-        [Route("/api/GetGoods")]
-        public async Task<IActionResult> GetGoods(int page,int limit) 
-        {
-            List<W_Warehuase> goods = await _Wmss.GetGoods();
-            string lint = JsonConvert.SerializeObject(goods);
-            var count = goods.Count;
-            goods = goods.Skip((page - 1) * limit).Take(limit).ToList();
-            JsonData json = new JsonData() { code = 0, msg = "", count = count + 1, data = goods };
-            return Ok(lint);
-        }
-        
+        //[HttpGet]
+        //[Route("/api/GetGoods")]
+        //public async Task<IActionResult> GetGoods(int page, int limit)
+        //{
+        //    List<W_Warehuase> goods = await _Wmss.GetGoodes();
+        //    string lint = JsonConvert.SerializeObject(goods);
+        //    var count = goods.Count;
+        //    goods = goods.Skip((page - 1) * limit).Take(limit).ToList();
+        //    JsonData json = new JsonData() { code = 0, msg = "", count = count + 1, data = goods };
+        //    return Ok(lint);
+        //}
+
+
     }
 }

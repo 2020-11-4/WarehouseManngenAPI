@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,8 +9,29 @@ namespace WMSAPI.Dal
 {
    public interface IWMSS
     {
+        //调拨审核
+        //Task<List<Audits>> GetT_Audits();
+        //调拨物品详情
+        Task<List<Merging>> GetT_Merging();
+        //补货需求列表
+        Task<List<Replenishments>> GetT_Replenishments();
+        //补货需求详情
+        Task<List<Orderdetail>> GetT_Orderdetail();
+
+        //调拨单列表
+        Task<List<Singlerows>> GetT_Singlerows();
+
+
+
         //添加仓库设置
-        Task<int> Add(Warehous warehous);
+
+        int AddWarehous(Warehouse warehous);
+        //显示库区管理
+        //Task<List<Goods>> GetGoods();
+
+        int Add(Warehouse Warehouse);
+
+
         //出库明细显示
         Task<List<ckmx>> Clibraryshow();
 
@@ -25,8 +47,18 @@ namespace WMSAPI.Dal
         Task<List<Z_CaiCha>> AOGShowAsync();
 
         //显示仓库管理
-        Task<List<W_Warehuase>> GetGoods();
-        //删除
-        Task<int> DelGoods(int id);
+        // Task<List<W_Warehuase>> GetGoods();
+       //绑定
+        Task<List<Z_Kuai>> ReceivingAsync();
+      
+        Task<List<Warehouse>> ReserAsync();
+        Task<List<Z_Kuai>> BindingAsync();
+        Task<List<Material>> CheckinAsync();
+        Task<int> DelkaiAsync(int DId);
+        Task<List<Supplies>> SwiftAsync();
+        Task<List<Productlist>> CategoryAsync();
+        Task<List<Z_CaiCha>> RegistrationAsync(int XId);
+
+
     }
 }

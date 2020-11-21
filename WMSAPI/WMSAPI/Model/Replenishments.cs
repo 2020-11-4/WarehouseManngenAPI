@@ -12,8 +12,8 @@ namespace WMSAPI.Model
     public class Replenishments
     {
         [Key]
-        public int IDX { get; set; }//序号
-        public int Replenishodd { get; set; }//补货单号
-        public int ReplenishDate { get; set; }//补货日期
+        public int IXD { get; set; }//主键Id序号
+        public string  Replenishodd { get; set; }//补货单号
+        public DateTime ReplenishDate { get; set; }//补货日期
     }
 }
