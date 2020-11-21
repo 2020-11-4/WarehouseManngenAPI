@@ -122,7 +122,8 @@ namespace WMSAPI.Controllers
             }
             if (!string.IsNullOrEmpty(RPin))
             {
-                Receiving = Receiving.Where(st => st.Classes.Contains(RPin)).ToList();
+                int pin = Convert.ToInt32(RPin);
+                Receiving = Receiving.Where(st => st.Pid == pin).ToList();
             }
             if (!string.IsNullOrEmpty(Ren))
             {
