@@ -156,5 +156,15 @@ namespace WMSAPI.Controllers
             string json = JsonConvert.SerializeObject(Binding);
             return Ok(json);
         }
+
+        //绑定供应商
+        [HttpGet]
+        [Route("/api/ProviderAsync")]
+        public async Task<IActionResult> ProviderAsync()
+        {
+            var Provider = await _Wmss.ProviderAsync();
+            string json = JsonConvert.SerializeObject(Provider);
+            return Ok(json);
+        }
     }
 }

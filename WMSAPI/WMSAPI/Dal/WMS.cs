@@ -210,5 +210,12 @@ namespace WMSAPI.Dal
             return list;
         }
 
+        //绑定供应商
+        public async Task<List<Supplierss>> ProviderAsync()
+        {
+            var list = await db.Queryable<Supplierss>().ToListAsync();
+            return list;
+        }
+
     }
 }

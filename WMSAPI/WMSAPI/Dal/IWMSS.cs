@@ -45,10 +45,11 @@ namespace WMSAPI.Dal
         Task<List<particulars>> particularsshow();
 
         Task<List<Z_CaiCha>> AOGShowAsync();
+        Task<List<Supplierss>> ProviderAsync();//绑定供应商
 
         //显示仓库管理
         // Task<List<W_Warehuase>> GetGoods();
-       //绑定
+        //绑定
         Task<List<Z_Kuai>> ReceivingAsync();
       
         Task<List<Warehouse>> ReserAsync();
