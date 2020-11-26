@@ -13,7 +13,8 @@ namespace WMSAPI.Model
     {
         [Key]
         public int Aid { get; set; }//主键Id
-        public string WarehouseName { get; set; }//仓库名称
+        public int Wid { get; set; }
+        public int Kid { get; set; }
         public string Name { get; set; }//姓名
         public string LoginPjone { get; set; }//登录手机号
         public DateTime CreateDate { get; set; }//创建时间

@@ -328,9 +328,16 @@ namespace WMSAPI.Dal
             return list;
         }
 
-        public Task<List<Merging>> GetT_Audits()
+        //调拨审核
+        public async Task<List<Merging>> GetT_Audits()
         {
-            throw new NotImplementedException();
+            var list = await db.Queryable<Audits, Itemdetails, product>((at, it, su) => new JoinQueryInfos
+           (
+             JoinType.Left, at.Id == it.XID,
+             JoinType.Left, at.LId == su.Product_Id
+           ))
+           .Select<Merging>().ToListAsync();
+            return list;
         }
         //显示货位表
         public async Task<List<G_Goodsallocation>> GetGoodsallocation()

@@ -22,5 +22,6 @@ namespace WMSAPI.Model
         public bool WarehouseEntities { get; set; }//实体仓库
         public bool State { get; set; }//当前状态
         public int WareId { get; set; }//温区id
+        public int Cid { get; set; }
     }
 }

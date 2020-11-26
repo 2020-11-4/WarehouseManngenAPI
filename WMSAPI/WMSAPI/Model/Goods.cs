@@ -13,7 +13,7 @@ namespace WMSAPI.Model
     {
         [Key]
         public int Gid { get; set; }//主键Id
-        public int Id { get; set; }//仓库id
+        public int IID { get; set; }//仓库id
         public string Rsesrvoirare { get; set; }//库区
         public string DescriptionGoods { get; set; }//仓库代码
     }
