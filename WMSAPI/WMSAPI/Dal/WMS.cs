@@ -237,6 +237,16 @@ namespace WMSAPI.Dal
             var list = await db.Queryable<Supplierss>().ToListAsync();
             return list;
         }
-
+        //显示报损
+        public async Task<List<FMmodel>> FMShow()
+        {
+            var list = await (db.Queryable<Warehouse, product, Frmlosses>((a, b, c) => new JoinQueryInfos(
+               JoinType.Left, a.WareId == b.Product_Id,//可以用&&实现 on 条件 and
+               JoinType.Left, a.WareId == c.ID
+             ))
+           //.Where((st,sc)=>sc.id>0) 多表条件用法
+           .Select<FMmodel>().ToListAsync());
+            return list;
+        }
     }
 }

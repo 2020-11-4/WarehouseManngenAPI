@@ -23,8 +23,6 @@ namespace WMSAPI.Dal
         //调出发配区
         Task<List<Distribution>> GetT_Distribution();
 
-
-
         Task<List<Z_CaiCha>> AOGShowAsync();
         Task<List<Z_Kuai>> ReceivingAsync();
         Task<List<Warehouse>> ReserAsync();
@@ -34,16 +32,7 @@ namespace WMSAPI.Dal
         Task<List<Supplies>> SwiftAsync();
         Task<List<Productlist>> CategoryAsync();
         Task<List<Z_CaiCha>> RegistrationAsync(int XId);
-
-
-
-
-
-
-
-
-
-
+        Task<List<FMmodel>> FMShow();
         //添加仓库设置
         int AddWarehous(Warehouse warehous);
         //显示库区管理
