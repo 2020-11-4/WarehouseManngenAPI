@@ -89,7 +89,7 @@ namespace WMSAPI.Dal
         public async Task<List<W_Warehuase>> GetGoods()
         {
             var list = await (db.Queryable<Goods, Warehouse, Warmarea>((g, h, w) => new JoinQueryInfos(
-                JoinType.Left, g.Gid == h.id,
+                JoinType.Left, g.Gid == h.Cid,
                  JoinType.Left, h.WareId == w.WWid
               ))
            //.Where((g, h) => g.Rsesrvoirare == Rsesrvoirare && h.WarehouseName == WarehouseName )
@@ -344,7 +344,7 @@ namespace WMSAPI.Dal
         {
             var list = await db.Queryable<Warehouse, Goods, CommodityShow>((w, g, c) => new JoinQueryInfos(
                  JoinType.Left, w.Cid == g.Gid,
-                 JoinType.Left, g.IID == c.Hid
+                 JoinType.Left, g. IID== c.Hid
                  )).Select<G_Goodsallocation>().ToListAsync();
             return list;
         }
