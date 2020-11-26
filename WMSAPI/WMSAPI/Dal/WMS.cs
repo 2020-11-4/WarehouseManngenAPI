@@ -138,12 +138,6 @@ namespace WMSAPI.Dal
         {
 
             var list =await  db.Queryable<Supplies>().ToListAsync();
-
-            //var list =await  db.Queryable<Supplies, Purchasing, Supplierss>((st, sc, sl) => new JoinQueryInfos(
-            //              JoinType.Left, st.Munitprice == sc.Purchasing_Id,
-            //              JoinType.Left, sc.Supplier == sl.Sid
-            //        )).Select<Z_Kuai>().ToListAsync();
-
             return list;
         }
 
