@@ -25,10 +25,10 @@ namespace WMSAPI.Dal
             });
 
         //调拨单列表
-        public async Task< List<Singlerows>>GetT_Singlerows()
+        public async Task< List<Singlerows>>GetT_Singlerows( )
         {
             var list = await (db.Queryable<Singlerows, Warehouse>((sl, wh) => new JoinQueryInfos(JoinType.Left, sl.IDX == wh.id))
-                  //.Where((sl, wh) => sl.IDX > 0).ToList();
+
                   .Select<Singlerows>().ToListAsync());
 
             //var list = await db.SqlQueryable<Singlerows>(@"select *from Singlerows inner join Warmarea on Singlerows.IDX=Warmarea.WWid")
@@ -37,14 +37,23 @@ namespace WMSAPI.Dal
         }
          
         //调拨物品详情
-        public async Task<List<Merging>> GetT_Merging()
+        public async Task<List<Singlerows>> GetT_Merging(int MId1)
         {
-            //var list = await (db.Queryable<Itemdetails,product>((It,wh)=>new JoinQueryInfos(JoinType.Left,It.XID==wh.Product_Id))
-            //    .Select<Itemdetails>().ToListAsync());
-            var list = await db.Queryable<Itemdetails, product>((it,su)=>new JoinQueryInfos(JoinType.Left,it.XID==su.Product_Id))
-                .Select<Merging>().ToListAsync();
+             var list = await db.Queryable<Singlerows>()
+             .Where(st => st.IDX == MId1)
+             .Select<Singlerows>().ToListAsync();
+             return list;
+        }
+        public async Task<List<Merging>> GetT_Merging1()
+        {
+            var list = await db.Queryable<Itemdetails, product>((it, su) => new JoinQueryInfos
+           (
+            JoinType.Left, it.XID == su.Product_Id
+           ))
+            .Select<Merging>().ToListAsync();
             return list;
         }
+
         //补货需求列表
         public async Task<List<Replenishments>> GetT_Replenishments()
         {
@@ -60,10 +69,27 @@ namespace WMSAPI.Dal
             return list;
         }
         //调拨审核
-        //public async Task<List<Audits>> GetT_Audits()
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public async Task<List<Merging>> GetT_Audits()
+        {
+            var list = await db.Queryable< Audits,Itemdetails, product>((at,it, su) => new JoinQueryInfos
+           (
+             JoinType.Left, at.Id == it.XID,
+             JoinType.Left, at.LId == su.Product_Id
+           ))
+           .Select<Merging>().ToListAsync();
+            return list;
+        }
+        //调出发配区
+        public async Task<List<Distribution>> GetT_Distribution()
+        {
+            var list = await db.Queryable<Distribution,Material>((bt,mt) => new JoinQueryInfos
+           (
+             JoinType.Left, bt.QId == mt.Material_Id
+           ))
+           .Select<Distribution>().ToListAsync();
+            return list;
+        }
+
 
         //添加仓库
         public int Add(Warehouse Warehouse)
@@ -71,6 +97,7 @@ namespace WMSAPI.Dal
             int list =  db.Insertable(Warehouse).ExecuteCommand();
             return list;
         }
+
         public async Task<List<Z_CaiCha>> AOGShowAsync()
         {
             var list = await (db.Queryable<Purchasing, Productlist, Supplierss>((st, sc, di) => new JoinQueryInfos(

@@ -13,10 +13,11 @@ namespace WMSAPI.Model
     {
         [Key]
         public int Id { get; set; }//主键Id序号
-        public decimal Auditmoney { get; set; }//审批金额
+        public int LId { get; set; }//关联键
+        public int Sum { get; set; }//待审核调拨状态总数
+        public decimal Auditmoney { get; set; }//审批金
         public bool Auditstatus { get; set; }//审核状态
         public string Auditopinion { get; set; }//审核意见
         public DateTime Allocationdate { get; set; }//审核时间
-       
     }
 }

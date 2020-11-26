@@ -44,5 +44,27 @@ namespace WMSAPI.Model
         public string Approvalnumber { get; set; }//审批数量
         public string Turnoverbasket { get; set; }//已出库数量
         public string Image { get; set; }// 周转筐  
+        /// <summary>
+        /// 单列表
+        /// </summary>
+        [Key]
+        public int IDX { get; set; }  //主键Id序号      
+        public string Requisition { get; set; }//调拨单号
+        public string Tuneout { get; set; }//调出仓库
+        public string Transferred { get; set; }//调入仓库
+        public string Allocationdate { get; set; }//调拨日期
+        public string Allotpeople { get; set; }//调拨人
+        public int Auditstate { get; set; }//审核状态
+        public int Allotcondition { get; set; }//调拨状态
+        public int Framnumber { get; set; }//装框数量
+
+        [Key]
+        public int Id { get; set; }//主键Id序号
+        public int LId { get; set; }//关联键
+        public int Sum { get; set; }//待审核调拨状态总数
+        public decimal Auditmoney { get; set; }//审批金
+        public bool Auditstatus { get; set; }//审核状态
+        public string Auditopinion { get; set; }//审核意见
+        //public DateTime Allocationdate { get; set; }//审核时间
     }
 }
