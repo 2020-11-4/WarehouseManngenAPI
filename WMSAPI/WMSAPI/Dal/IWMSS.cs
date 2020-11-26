@@ -34,18 +34,51 @@ namespace WMSAPI.Dal
         Task<List<Z_CaiCha>> RegistrationAsync(int XId);
         Task<List<FMmodel>> FMShow();
         //添加仓库设置
-        int AddWarehous(Warehouse warehous);
-        //显示库区管理
-        //Task<List<Goods>> GetGoods();
-        int Add(Warehouse Warehouse);
+        int Add(Warehouse warehous);
+
+        //添加盘点任务
+        int PDAdd(pandian warehous);
+
+        //盘点任务管理未盘点
+        Task<List<pandian>> panshow();
+
+        //产品显示
+        Task<List<product>> CPshow();
+
+        //盘点任务管理已盘点
+        Task<List<pandian>> panyshow();
+
+        //未盘点详情
+        Task<List<pandian>> xiangqing(int id);
+
         //出库明细显示
         Task<List<ckmx>> Clibraryshow();
-        //库区绑定下拉
-        Task<List<Warmarea>> KQbang();
+
+        //产品出库任务单详情
+        Task<List<particulars>> CPoutshow();
+
+        //出库记录
+        Task<List<ckjl>> CKrecord();
+
         //采购退货任务
         Task<List<CGreturned>> CGreturnedshow();
+
+        //库区绑定下拉
+        Task<List<Warmarea>> KQbang();
+
+        //添加出库任务
+        Task<List<product>> outtask();
+
         //采购退货任务详情
         Task<List<particulars>> particularsshow();
+
+        //显示仓库管理
+        Task<List<W_Warehuase>> GetGoods();
+
+    
+        //Task<List<Goods>> GetGoods();
+
         Task<List<Supplierss>> ProviderAsync();//绑定供应商
+
     }
 }
