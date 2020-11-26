@@ -79,6 +79,18 @@ namespace WMSAPI.Dal
         //Task<List<Goods>> GetGoods();
 
         Task<List<Supplierss>> ProviderAsync();//绑定供应商
+        //添加管理员
+        Task<int> AddAdministrators(Administrators administrators);
 
+        //显示货物管理
+        Task<List<G_Goodsallocation>> GetGoodsallocation();
+        //显示库管员管理
+        Task<List<Administrators>> GetAdministrators();
+        //显示仓库权限
+        Task<List<C_Controllership>> GetControllerships();
+        //添加库区
+        Task<int> AddGoods(Goods goods);
+        //反填库区管理
+        Task<List<W_Warehuase>> FanWarehous(int id);
     }
 }

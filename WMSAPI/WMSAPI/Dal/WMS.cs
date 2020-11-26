@@ -9,7 +9,7 @@ using WMSAPI.Model;
 using System.Text.Json;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
-
+using Microsoft.AspNetCore.Mvc;
 
 namespace WMSAPI.Dal
 {
@@ -89,7 +89,7 @@ namespace WMSAPI.Dal
         public async Task<List<W_Warehuase>> GetGoods()
         {
             var list = await (db.Queryable<Goods, Warehouse, Warmarea>((g, h, w) => new JoinQueryInfos(
-                JoinType.Left, g.Id == h.id,
+                JoinType.Left, g.Gid == h.id,
                  JoinType.Left, h.WareId == w.WWid
               ))
            //.Where((g, h) => g.Rsesrvoirare == Rsesrvoirare && h.WarehouseName == WarehouseName )
@@ -331,6 +331,50 @@ namespace WMSAPI.Dal
         public Task<List<Merging>> GetT_Audits()
         {
             throw new NotImplementedException();
+        }
+        //显示货位表
+        public async Task<List<G_Goodsallocation>> GetGoodsallocation()
+        {
+            var list = await db.Queryable<Warehouse, Goods, CommodityShow>((w, g, c) => new JoinQueryInfos(
+                 JoinType.Left, w.Cid == g.Gid,
+                 JoinType.Left, g.IID == c.Hid
+                 )).Select<G_Goodsallocation>().ToListAsync();
+            return list;
+        }
+        //显示库管员管理
+        public async Task<List<Administrators>> GetAdministrators()
+        {
+            var list = await db.Queryable<Administrators>().ToListAsync();
+            return list;
+        }
+        //显示仓库权限
+        public async Task<List<C_Controllership>> GetControllerships()
+        {
+            var list = await (db.Queryable<Administrators, Warehouse, Goods>((a, w, g) => new JoinQueryInfos(
+                 JoinType.Left, a.Wid == w.id,
+                  JoinType.Left, a.Kid == g.Gid
+               ))
+          //.Where((g, h) => g.Rsesrvoirare == Rsesrvoirare && h.WarehouseName == WarehouseName )
+          .Select<C_Controllership>().ToListAsync()); ;
+            return list;
+        }
+        //添加库区
+        public async Task<int> AddGoods([FromForm] Goods goods)
+        {
+            var list = await db.Insertable(goods).ExecuteCommandAsync();
+            return list;
+        }
+        //反填库区管理
+        public async Task<List<W_Warehuase>> FanWarehous(int id)
+        {
+            List<W_Warehuase> list = await db.Queryable<W_Warehuase>().Where(i => i.id == id).ToListAsync();
+            return list;
+        }
+        //添加管理员
+        public async Task<int> AddAdministrators([FromBody] Administrators administrators)
+        {
+            var sql = await db.Insertable(administrators).ExecuteCommandAsync();
+            return sql;
         }
     }
 }
